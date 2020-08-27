@@ -2,5 +2,8 @@ language: node_js
 node_js:
   - 14.6.0
 script:
-  - "npm run lint"
   - "npm run test"
+branches:
+  only:
+  - master
+  - develop

@@ -1,15 +1,14 @@
 language: node_js
 node_js:
-  - 14.6.0
-script:
-  - "npm run test"
-branches:
-  only:
-  - master
-  - develop
+- stable
+- '6'
+- '4'
 deploy:
   provider: heroku
   api_key:
-    secure: 0eebccad-5b0e-4138-aa10-1a0859c0ff30
+    secure: RZgpx+0gPwB+JziyKnVdTML7c/SYRO97NGSJnw+VzXyff1+7t3Fxe5PkypKd71bBTK93dNzajkMBShg2Fgprd0ekIvjJTerMziLK+yXakFxmZAxZPw2lt4rCqGRLF2eb9l3ZKk+IGwpaXhSG+RtqF3uOoo953N92zBc20qLyiCLUaALKteR2dqtUV90ErecdX3JjaLEVWP7CfeAzidDlniPC5vZcj+CrKxZvWz0AVHVizHi9QL2eajZO29WQLUV4+opWk3CapKfArAyxvEDgAjM9VuReCcuF+SjaMXP2QnyAFiNQwHifX/11//F/RGiBJd8Jo56vCz285t8vdto5aI1dtslHDSP1qLmprHPcscFSZnUk50YXoZD03vGl4qTcsHICAfIr35ieoonxoroII8okh26Ept6PUNCmv0wWAzLmCIDKO0BC/+Uvs150x17E1hdKO41WGmx0ZbULOPLN9kaKpADNabYLljJ7WGENa/B3aXcvPqc3ZccqFlIV2lhXrNx2EJert3TeLD06CjSPCu3mX2lsWe9eYP3amZQkfZpRrdHKODIA0lXA+M94cQMKQsn5yBOXYb+gIunrfNvzANjr6KWUQMbtZ0D5n7cNrxz/BM5N4umPLEO8ZmXt/7RjJ1G9xNfbjrBN6aEkTOCKoGxk999WnysE8aD6tlcQEmM=
   app: sdm-project
-  on: develop
+  on:
+    repo: caishuyao/SDMProject
+    branch: develop
+  skip_cleanup: 'true'

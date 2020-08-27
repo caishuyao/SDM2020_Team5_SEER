@@ -4,7 +4,7 @@ node_js:
 deploy:
   provider: heroku
   api_key:
-    secure: 0eebccad-5b0e-4138-aa10-1a0859c0ff30
+    secure: 4ecdd49e-183a-49fc-bfeb-c7ee5625e131
   app: sdm-project
   on:
     repo: caishuyao/SDMProject

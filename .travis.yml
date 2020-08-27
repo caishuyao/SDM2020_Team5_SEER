@@ -12,4 +12,4 @@ deploy:
   api_key:
     secure: 0eebccad-5b0e-4138-aa10-1a0859c0ff30
   app: sdm-project
-
+  on: develop

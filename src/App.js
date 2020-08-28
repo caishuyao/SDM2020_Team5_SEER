@@ -8,15 +8,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Software Development Method 
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/caishuyao/SDMProject"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Software Development Method 
+	  View from Github.com
         </a>
       </header>
     </div>

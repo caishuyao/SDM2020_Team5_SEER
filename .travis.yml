@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- stable
+deploy:
+  provider: heroku
+  api_key:
+    secure: Sore49AkzRSazgkAEDCT9sW8xNfQ4JrLVyfn8txuMFD89nC6rSZVvmQ22VS26u0dxa3gcR70UXfycUhnj8OxxUUGc6BAw5L7Qlu41kUHAfivbA6+qMNnCQ7WbpM9ITtinfhk4Dds4vCDxmJK5v/WOeQJA/ms7Ot+9nwpFciiDg8TgSNX+cv4Z2BF8S6fKZ02xz4REcHYDTFOzqncV5y9AmQHwHhSI3vz1Bh3k0z9FEbed8FBl25ov96hD7zeXSXVkixeHL8jTwwVO10BNhnXE2VWXMVj0uxxfR2QrHqw0t3IHQDV5uX+y8rqpT6ENuF2N5YiEoSkAB7WN7kMNr/zRBDBrjEwSRC9TBxL+pmHsTCrrV73zqemwaiiLMRU9Q2+6RHKemJ/cZ9B0HyGbzi+Vk9EcGAMfS9mxbmZO8NeHLpSgOvI0CJJCJpUHIpv5iafI2fDpidlnaWABCmiDAHGlicx3eVxUUJumFh2uuFM0VHsjhv3a2gAN3PtPvdDRtjLRtAG4sDd8cqh9CMR724jcnXMvv8Ii6bisfJpx/QErD8Xi4rtjUU6di++/szRDtUtN/DuSMLj8Mm48wbQJmUz8SReaARYQEG3tpJ6OeSTlAmNXRSnbdn/Mw2TB5aFmcbI5QaKHQP80eqUVz6ZYAGeQFwyPaTmH3v/3CeZRhWOlo0=
+  app: sdm-project
+  on:
+    repo: caishuyao/SDMProject
+    branch: develop
+  skip_cleanup: 'true'

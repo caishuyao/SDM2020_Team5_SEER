@@ -15,11 +15,7 @@ function App() {
           href="https://github.com/caishuyao/SDMProject"
           target="_blank"
           rel="noopener noreferrer"
-          //TODO #8 "Sri Do this"
-          //NOTE "TEST"
-          //REVIEW "TEST"
-          //ANCHOR "SRI"
-        >
+        
 	  View from Github.com
         </a>
       </header>

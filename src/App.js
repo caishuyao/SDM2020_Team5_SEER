@@ -14,7 +14,7 @@ function App() {
           className="App-link"
           href="https://github.com/caishuyao/SDMProject"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer">
         
 	  View from Github.com
         </a>

@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
 import './App.css';
+import Main from './components/main';
+import {Link} from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Software Development Method 
-        </p>
-        <a
-          className="App-link"
-          href="https://github.com/caishuyao/SDMProject"
-          target="_blank"
-          rel="noopener noreferrer">
-        
-	  View from Github.com
-        </a>
-      </header>
-    </div>
+  return (<div style={{height: '300px', position: 'relative'}}>
+  <Layout fixedHeader>
+      <Header title={<span><span style={{ color: '#ddd' }}></span><strong>SEER</strong></span>}>
+          <Navigation>
+              <Link to="/analyst">Analyst</Link>
+              <Link to="/searcher">Searcher</Link>
+              <Link to="/submitter">Submitter</Link>
+              <Link to="/moderator">Moderator</Link>
+          </Navigation>
+      </Header>
+      <Drawer title="SEER">
+          <Navigation>
+            <Link to="/analyst">Analyst</Link>
+              <Link to="/searcher">Searcher</Link>
+              <Link to="/submitter">Submitter</Link>
+              <Link to="/moderator">Moderator</Link>
+          </Navigation>
+      </Drawer>
+      <Main/>
+      <Content />
+  </Layout>
+</div>
   );
 }
 

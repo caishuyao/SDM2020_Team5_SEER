@@ -10,7 +10,8 @@ We have used react mdl to build a basic web structure where we can work in indiv
 ### npm init --yes
 ### npm install --save react-router-dom
 ### npm install --save react-mdl
-
+### npm install react-bootstrap-date-picker
+### npm install react-bootstrap bootstrap
 
 
 

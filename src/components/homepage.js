@@ -1,31 +1,58 @@
 import React, {Component} from 'react';
-import { Grid, Cell,Card,CardText,CardTitle,CardActions, Button, CardMenu, IconButton } from 'react-mdl';
-  
+import {Container,Row,Col} from 'react-bootstrap';
+import{Navbar,Nav,NavDropdown,Button,Jumbotron,FormControl,FormGroup,Form} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Image from 'react-bootstrap/Image';
 
 class Home extends Component {
     render()
     {
         return (
-        <div style ={{width:'100%',margin: 'auto'}} >
-            <body>
-           <Grid className="landing-grid">
-               <Cell col={12}>
-               <Card shadow={0} style={{width: '512px', margin: 'auto'}}>
-    <CardTitle style={{color: '#fff', height: '176px', background: 'url(http://www.getmdl.io/assets/demos/welcome_card.jpg) center / cover'}}>Welcome</CardTitle>
-    <CardText>
-        Welcome to SEER Site.
-    </CardText>
-    <CardActions border>
-        <Button colored>Get Started</Button>
-    </CardActions>
-    <CardMenu style={{color: '#fff'}}>
-        <IconButton name="share" />
-    </CardMenu>
-</Card>
-               </Cell>
-           </Grid>
-           </body>
-        </div>
+        <div>
+            <Container>
+
+  <Row><Col><Jumbotron>
+  <p>
+  <div>
+  <InputGroup className="mb-3">
+    <FormControl
+      placeholder="Search"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+    />
+   
+    <InputGroup.Append>
+      <Button as="input" type="submit" value="Submit" ></Button>
+    </InputGroup.Append>
+  </InputGroup>
+  <Form>
+  <Form.Group controlId="formBasicRange">
+    <Form.Label> Date Range</Form.Label>
+    <Form.Control type="range" />
+  </Form.Group>
+</Form>
+  </div>
+  </p>
+  <p>
+
+  </p>
+</Jumbotron></Col></Row>
+
+<Row><Col><Jumbotron>
+  <h3>Welcome to our SEER</h3>
+  <p>
+ Display number of articles, year of articles, and author of articles.
+  </p>
+  <p>
+   //cards here
+  </p>
+</Jumbotron></Col></Row>
+
+</Container>
+  
+</div>
+       
         )
     }
 }

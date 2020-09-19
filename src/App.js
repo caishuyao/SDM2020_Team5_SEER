@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 function App() {
   return (
-<div style={{height: '300px', position: 'relative'}}>
+<div style={{height: '1000px', position: 'relative'}}>
   <Layout fixedHeader>
       <Header className="header-color" title={<span><span style={{ color: '#ddd' }}></span><strong>SEER</strong></span>}>
           <Navigation>
@@ -15,6 +15,8 @@ function App() {
               <Link to="/searcher">Searcher</Link>
               <Link to="/submitter">Submitter</Link>
               <Link to="/moderator">Moderator</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
           </Navigation>
       </Header>
       <Drawer title="SEER">
@@ -26,7 +28,9 @@ function App() {
               <Link to="/moderator">Moderator</Link>
           </Navigation>
       </Drawer>
-      <Main/>
+      <div><Main/>
+        </div>
+      
       <Content />
   </Layout>
 </div>

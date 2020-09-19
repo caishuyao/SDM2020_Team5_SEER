@@ -12,12 +12,6 @@ class Home extends Component
               <Card shadow={5} style={{minWidth:'450', margin:'auto'}}>
                   <CardTitle style ={{color:'#fff',height:'175px',background:'url() center/cover'}}> Your Search End's Here</CardTitle>
               </Card>
-
-
-
-
-
-
                </Cell>
            </Grid>
 

@@ -5,9 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 We have used react mdl to build a basic web structure where we can work in individual components: Components are searcher, submitter, moderator, analyst and the home page. We can assign them individually in trello and work.
 
-##Before use run 
-###npm install --save react-router-dom
-###npm install --save react-mdl
+## Before use run 
+### npm install --save react-router-dom
+### npm install --save react-mdl
 
 
 

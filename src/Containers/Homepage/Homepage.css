@@ -1,0 +1,41 @@
+.Content{
+    overflow: hidden;
+    margin: 32px 0;
+    padding: 0 16px;
+}
+
+.Content div{
+    max-width: 65rem;
+}
+
+.Item{
+    overflow: hidden;
+    border: 1px solid #dcdcdc;
+    line-height: 100px;
+}
+
+.Item h1{
+    width: 330px;
+    display: block;
+    margin: auto;
+}
+
+.fadeIn {
+	animation: fadeIn 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+@media (min-width: 769px){
+    .Content{
+         margin: 32px 10rem;
+         padding: 0 24px;
+    }
+ }

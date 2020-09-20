@@ -1,6 +1,8 @@
 const express =require('express');
 const mongoose =require('mongoose');
 const url = 'mongodb+srv://sdm:Sdm_2020_S2_T5@sdmdb.4ohn0.mongodb.net/sdm?authSource=admin&replicaSet=atlas-v22uqm-shard-0&w=majority&readPreference=primary&retryWrites=true&ssl=true';
+const bodyParser= require('body-parser')
+
 
 const app = express();
 
@@ -13,12 +15,16 @@ con.on('open',()=>
 });
 
 
-
 app.listen(3121,()=>{
 console.log('Server started at 3121')
 });
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/', (req, res)=> {
     res.send('Server connected get request');
 });
+
+app.post('/components/submitter/quotes', (req, res) => {
+    console.log('Hellooooooooooooooooo!')
+  });
 

@@ -48,5 +48,17 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "lint": "^0.7.0"
-  }
+  },
+  "description": "Project for SDM Assigment all work should be done first on branch 'develop' then merged into branch 'master' This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caishuyao/SDM2020_Team5_SEER.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caishuyao/SDM2020_Team5_SEER/issues"
+  },
+  "homepage": "https://github.com/caishuyao/SDM2020_Team5_SEER#readme"
 }

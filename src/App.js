@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import Test from './components/test';
 
 
 import './App.css';
@@ -9,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter><Layout/></BrowserRouter>
+        <Test/>
     </div>
   );
 }

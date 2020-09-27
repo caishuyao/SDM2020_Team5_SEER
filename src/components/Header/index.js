@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Logo from './Logo/Logo';
 import NavigationItems from './NavigationItems/NavigationItems';
-import classes from './Header.css';
+import './Header.css';
 import DrawerToggle from './SideDrawer/DrawerToggle/DrawerToggle';
 import SideDrawer from './SideDrawer/SideDrawer';
 
@@ -22,7 +22,7 @@ const header = props => {
     // };
 
     const desktopHeader = (
-        <header className={classes.Header} >
+        <header className="Header" >
             <Logo />
             <NavigationItems />
         </header>

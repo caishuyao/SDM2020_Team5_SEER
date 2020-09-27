@@ -6,7 +6,7 @@
 
 .NavigationItem a {
     padding:16px 50px;
-    font-family: 'Indie Flower', cursive;
+    font-family: arial,sans-serif;
     box-sizing: border-box;
     display: block;
     color: #000000;

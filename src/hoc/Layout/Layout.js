@@ -25,7 +25,7 @@ class Layout extends Component {
         return (
             <Aux >
                 <Header />
-                <main className={classes.Main}>
+                <main className="Main">
                     {this.props.children}
                 </main>
                 {/* <div>© 2020 abnormalperks.net | Build By Jason Chen</div> */}

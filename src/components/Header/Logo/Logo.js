@@ -1,10 +1,10 @@
 import React from 'react';
 
 import myLogo from '../../../assets/images/seer.png';
-import classes from './Logo.css';
+import './Logo.css';
 
 const logo = (props) => (
-    <div className={classes.Logo} style={{height: props.height}}>
+    <div className="Logo" style={{height: props.height}}>
         <a href='/'><img src={myLogo} alt="AP" /></a>
     </div>
 );

@@ -1,49 +1,50 @@
-import React, {Component} from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
 
-import{Navbar,Nav,NavDropdown,Button,Jumbotron,FormControl,FormGroup,Form,Row,Col} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import Main from '../main';
+import Logo from './Logo/Logo';
+import NavigationItems from './NavigationItems/NavigationItems';
+import './Header.css';
+import DrawerToggle from './SideDrawer/DrawerToggle/DrawerToggle';
+import SideDrawer from './SideDrawer/SideDrawer';
 
 
+const header = props => {
+    
+    // const pageWidth = window.innerWidth;
 
-class Header extends Component
-{
-    render()
-    {
-        return (
- <div>
-  
- <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" >
- <Navbar.Brand href="#home"><Link to="/">SEER</Link></Navbar.Brand>
- <Navbar.Toggle aria-controls="responsive-navbar-nav" />
- <Navbar.Collapse id="responsive-navbar-nav">
-   <Nav className="mr-auto">
-     <Nav.Link href="#"><Link to="/analyst">Analyst</Link></Nav.Link>
-     <Nav.Link href="#"><Link to="/searcher">Searcher</Link></Nav.Link>
-     <Nav.Link href="#"> <Link to="/submitter">Submitter</Link></Nav.Link>
-     <Nav.Link href="#"><Link to="/moderator">Moderator</Link></Nav.Link>
-   </Nav>
-   <Nav>
-     <Nav.Link href="#"><Link to="/login">Login</Link></Nav.Link>
-     <Nav.Link eventKey={2} href="#">
-       <Link to="/register">Register</Link>
-     </Nav.Link>
-   </Nav>
- </Navbar.Collapse>
-</Navbar>
-<Container>
- <Row>
-  
- 
- <Col><Main/></Col>
-  
- </Row>
- 
+    // const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
 
-</Container>
- 
-</div>)
-    }
-}
-export default Header;
+    // const sideDrawerClosedHandler = () => {
+    //     setSideDrawerIsVisible(false);
+    // };
+
+    // const sideDrawerToggleHandler = () => {
+    //     setSideDrawerIsVisible(!sideDrawerIsVisible);
+    // };
+
+    const desktopHeader = (
+        <header className="Header" >
+            <Logo />
+            <NavigationItems />
+        </header>
+    );
+
+    // const mobileHeader = (
+    //     <header className={classes.Header}>
+    //         <DrawerToggle clicked={sideDrawerToggleHandler} />
+    
+    //         <Logo />
+    //         <SideDrawer
+    //             open={sideDrawerIsVisible}
+    //             closed={sideDrawerClosedHandler}
+    //         />
+    //     </header>
+    // );
+
+    // let adjustHeader = pageWidth < 769? mobileHeader: desktopHeader;
+
+    return (
+        desktopHeader
+    );
+};
+
+export default header;

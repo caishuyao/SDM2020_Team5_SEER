@@ -6,11 +6,19 @@ import Test from './components/test';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 
+
+
+
+
+
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter><Layout/></BrowserRouter>
-        <Test/>
+     
+  
+        <welcome />
     </div>
   );
 }

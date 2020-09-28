@@ -1,5 +1,5 @@
 const express = require ('express');
-const path = require('path');
+const publicPath = path.join(__dirname, '..', 'public');
 const bodyParser = require('body-parser');
 const cors =require ('cors');
 const mongoose = require ('mongoose');
@@ -30,9 +30,11 @@ const port = process.env.PORT  ||8080;
 //->(3)
 app.use('/seersearch',searchRoutes);
 
-app.get('*', function(request, response) {
-  response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'))
-})
+app.use(express.static(publicPath));
+app.get('*', (req, res) => {
+   res.sendFile(path.join(publicPath, 'index.html'));
+});
+
 //search routes calling from (2)
 const server = app.listen(port, ()=> {
     console.log('Server is On Port : ' + port);

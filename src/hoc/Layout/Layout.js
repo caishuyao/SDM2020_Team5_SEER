@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Header from '../../components/Header';
 import Aux from '../Aux/Aux';
 import classes from './Layout.css';
-import iconClasses from '../../components/UI/iconfont/iconfont.css';
 
 class Layout extends Component {
     state = {

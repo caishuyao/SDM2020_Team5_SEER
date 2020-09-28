@@ -8,5 +8,5 @@ deploy:
   app: sdm-project
   on:
     repo: caishuyao/SDMProject
-    branch: develop
+    branch: jian-dev
   skip_cleanup: 'true'

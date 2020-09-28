@@ -29,6 +29,10 @@ const port = process.env.PORT  ||8080;
 //allocating port number we can change if there is a conflict in heroku probably select 8080 or 3000 or 3001
 //->(3)
 app.use('/seersearch',searchRoutes);
+
+app.get('*', function(request, response) {
+  response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'))
+})
 //search routes calling from (2)
 const server = app.listen(port, ()=> {
     console.log('Server is On Port : ' + port);

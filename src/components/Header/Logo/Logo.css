@@ -1,0 +1,24 @@
+.Logo {
+    padding: 0;
+    margin: 0 8px;
+    height: 100%;
+}
+
+.Logo img {
+    float: left;
+    height: 100%;
+}
+
+.Logo div{
+    float: left;
+    margin-left: 10px;
+    line-height: 25px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .Logo div{
+        display: none;
+    }
+}

@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+
 import './App.css';
+import Layout from './hoc/Layout/Layout';
+import Search from './containers/Search';
+
+
+let routes = (
+  <Switch>
+    {/* <Route path="/Blog/:id" exact component={article} />
+    <Route path='/Blog' exact component={blog} />
+    <Route path="/Message" exact component={myMessage} />
+    <Route path="/About" exact component={about} />
+    <Route path="/Lab" exact component={myProjects} /> */}
+    <Route path="/" exact component={Search} />
+    <Redirect to="/" />
+  </Switch>
+);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Software Development Method 
-        </p>
-        <a
-          className="App-link"
-          href="https://github.com/caishuyao/SDMProject"
-          target="_blank"
-          rel="noopener noreferrer">
-        
-	  View from Github.com
-        </a>
-      </header>
+      <BrowserRouter><Layout>{routes}</Layout></BrowserRouter>
     </div>
   );
 }

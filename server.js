@@ -1,5 +1,6 @@
 const express = require ('express');
 const path = require('path');
+const publicPath = path.join(__dirname, '/build');
 const bodyParser = require('body-parser');
 const cors =require ('cors');
 const mongoose = require ('mongoose');
@@ -29,6 +30,13 @@ const port = process.env.PORT  ||8080;
 //allocating port number we can change if there is a conflict in heroku probably select 8080 or 3000 or 3001
 //->(3)
 app.use('/seersearch',searchRoutes);
+
+app.use(express.static(publicPath));
+
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(publicPath, 'index.html'));
+});
+
 //search routes calling from (2)
 const server = app.listen(port, ()=> {
     console.log('Server is On Port : ' + port);

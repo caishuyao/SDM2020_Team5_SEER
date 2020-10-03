@@ -8,5 +8,5 @@ deploy:
   app: sdm-project
   on:
     repo: caishuyao/SDM2020_Team5_SEER
-    branch: jian-dev
+    branch: master 
   skip_cleanup: 'true'

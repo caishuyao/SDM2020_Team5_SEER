@@ -31,6 +31,7 @@ const header = props => {
     // const mobileHeader = (
     //     <header className={classes.Header}>
     //         <DrawerToggle clicked={sideDrawerToggleHandler} />
+    
     //         <Logo />
     //         <SideDrawer
     //             open={sideDrawerIsVisible}

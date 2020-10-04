@@ -3,6 +3,20 @@ Project for SDM Assigment
 all work should be done first on branch 'develop' then merged into branch 'master'
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+We have used react mdl to build a basic web structure where we can work in individual components: Components are searcher, submitter, moderator, analyst and the home page. We can assign them individually in trello and work.
+
+## Before use run 
+### npm install
+### npm init --yes
+### npm install --save react-router-dom
+### npm install --save react-mdl
+### npm install react-bootstrap-date-picker
+### npm install react-bootstrap bootstrap
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

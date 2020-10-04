@@ -26,7 +26,7 @@ const searchRoutes =require('./routes/search.route');
 app.use(bodyParser.json());
 app.use(cors());
 //
-const port = process.env.PORT  ||8080;
+const port = process.env.PORT  ||5000;
 //allocating port number we can change if there is a conflict in heroku probably select 8080 or 3000 or 3001
 //->(3)
 app.use('/seersearch',searchRoutes);

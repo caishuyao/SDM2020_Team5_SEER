@@ -2,6 +2,10 @@
     margin: 20px auto;
 }
 
+.MenuItem {
+    width: 200px;
+}
+
 .Row div{
     padding: 20px 20px;
 }

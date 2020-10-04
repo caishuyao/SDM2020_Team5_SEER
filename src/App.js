@@ -1,10 +1,11 @@
-import React from 'react';
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 
-import './App.css';
-import Layout from './hoc/Layout/Layout';
-import Search from './containers/Search';
-
+import "./App.css";
+import Layout from "./hoc/Layout/Layout";
+import Search from "./containers/Search";
+import Submitter from "./containers/Submitter/Submitter";
+import List from "./containers/Submitter/List";
 
 let routes = (
   <Switch>
@@ -14,14 +15,17 @@ let routes = (
     <Route path="/About" exact component={about} />
     <Route path="/Lab" exact component={myProjects} /> */}
     <Route path="/" exact component={Search} />
-    <Redirect to="/" />
+    <Route path="/Submitter" exact component={Submitter} />
+    <Route path="/Browse" component={List} />
   </Switch>
 );
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter><Layout>{routes}</Layout></BrowserRouter>
+      <BrowserRouter>
+        <Layout>{routes}</Layout>
+      </BrowserRouter>
     </div>
   );
 }

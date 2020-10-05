@@ -26,7 +26,9 @@ class List extends Component {
 
   getList() {
     axios
-      .get("http://localhost:8080/seersearch")
+      .get(
+        "http://sdm-project-submit.herokuapp.com/seersearch"
+      ) /*http://localhost:8080/seersearch */
       .then((response) => {
         console.log(response);
         this.setState({

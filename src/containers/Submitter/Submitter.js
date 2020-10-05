@@ -36,7 +36,8 @@ class Submitter extends Component {
       sourcedb,
     } = this.state;
     axios
-      .post("http://localhost:8080/seersearch/Submitter", {
+      .post("http://sdm-project-submit.herokuapp.com/seersearch/Submitter", {
+        /* http://localhost:8080/seersearch/Submitter */
         datePublished: datePublished,
         submitterName: submitterName,
         title: title,

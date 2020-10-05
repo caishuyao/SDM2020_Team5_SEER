@@ -11,6 +11,5 @@ test('renders learn react link', () => {
                 App / >
                 <
                 /BrowserRouter>);
-                const linkElement = screen.getAllByText(/search/i); 
 	        expect(screen.queryAllByText(/search/i).exists)
             });

@@ -2,7 +2,12 @@ import React from "react";
 import { InputLabel, Button, Select, MenuItem, TextField, Grid } from "@material-ui/core";
 
 const Dropdown = props => {
-  
+   let removeButton;
+   if(props.key !=0){
+    removeButton = <Button onClick={() => props.removeDropdown(props.lineNum)}>remove</Button>;
+     }else{
+    removeButton = "";
+    }
     return (
       <Grid container spacing={2} >
         <Grid item xs={1}>
@@ -42,7 +47,7 @@ const Dropdown = props => {
         </Grid>
         <Grid item xs={2}>
           <Button onClick={props.addDropdown}>add</Button>
-          <Button onClick={() => props.removeDropdown(props.lineNum)}>remove</Button>
+          {removeButton}          
         </Grid>
       </Grid>
     )

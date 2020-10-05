@@ -38,13 +38,11 @@ const Dropdown = props => {
           <Select fullWidth defaultValue={'OR'}>
             <MenuItem value={'AND'}>AND</MenuItem>
             <MenuItem selected value={'OR'}>OR</MenuItem>
-            <MenuItem value={'AND NOT'}>AND NOT</MenuItem>
-            <MenuItem value={'OR NOT'}>OR NOT</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={2}>
-          <Button onClick={props.addDropdown}>+</Button>
-          <Button onClick={() => props.removeDropdown(props.lineNum)}>-</Button>
+          <Button onClick={props.addDropdown}>add</Button>
+          <Button onClick={() => props.removeDropdown(props.lineNum)}>remove</Button>
         </Grid>
       </Grid>
     )

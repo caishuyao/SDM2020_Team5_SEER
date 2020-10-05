@@ -40,8 +40,8 @@ function Search() {
     return (
         <Container className="SearchBarContainer">
             <Grid container spacing={1}>
-                <Grid item xs={3}>
-                    <TextField
+                <Grid item xs={6}>
+                    <TextField  fullWidth
                         required
                         id="outlined-required"
                         label="Keyword"
@@ -50,8 +50,10 @@ function Search() {
                         error={HasFocus && SearchKeyword === ""}
                         onClick={() => setHasFocus(true)}
                         value={SearchKeyword}
-                        onChange={e => handleSearchKeywordChange(e.target.value)}
+                        onChange={e => handleSearchKeywordChange(e.target.value)}                        
                     />
+                </Grid>
+                <Grid item xs={6}>
                 </Grid>
                 <Grid item xs={3}>
                     <TextField
@@ -94,7 +96,6 @@ function Search() {
                 </Grid>
                 <DropdownList/>
             </Grid>
-            <p hidden>software development method</p>
         </Container>
         // <div className="SearchBarContainer" >
             

@@ -34,7 +34,7 @@
   },
   "scripts": {
     "lint": "eslint src/**/*.js",
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
     "react-test": "react-scripts test",

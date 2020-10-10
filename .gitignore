@@ -12,8 +12,4 @@ yarn-debug.log*
 yarn-error.log*
 /.changelog
 .npm/
-yarn.lock
-package-lock.json
-
-package-lock.json
 SDM.code-workspace

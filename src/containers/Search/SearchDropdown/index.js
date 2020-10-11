@@ -10,7 +10,7 @@ const DropdownList = () => {
     return (
         <Grid item xs={12}>
             {Lines.map((line, index) => (
-             <Dropdown lineNum={index} addDropdown={addDropdown} removeDropdown={removeDropdown} />
+             <Dropdown key={index} lineNum={index} addDropdown={addDropdown} removeDropdown={removeDropdown} />
              ))}          
         </Grid>
     )

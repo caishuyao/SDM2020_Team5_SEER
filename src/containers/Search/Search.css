@@ -3,9 +3,13 @@
 }
 
 .MenuItem {
-    width: 200px;
+    width: 400px;
 }
 
-.Row div{
-    padding: 20px 20px;
+#StartYear {
+    margin: auto;
 }
+
+/* #EndYear {
+    margin: auto;
+} */

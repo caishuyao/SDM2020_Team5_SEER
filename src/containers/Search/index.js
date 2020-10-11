@@ -5,10 +5,14 @@ import SearchResult from '../SearchResult';
 import './Search.css';
 import { set } from 'mongoose';
 
+const methods = ['TDD', 'Agile'];
+
 function Search() {
     const [selectMethod, setSelectMethod] = useState();
+
     const handleSelectMethodChange = (s) => {
         setSelectMethod(s);
+        setSelectClaims();
     };
 
     const [selectClaims, setSelectClaims] = useState();
@@ -41,20 +45,25 @@ function Search() {
 
     const [HasFocus, setHasFocus] = useState(false);
 
+    let claims = [''];
+    const tddClaims = ['bad', 'good'];
+    const agileClaims = ['what', 'nice'];
+    if (selectMethod === "TDD"){ claims = tddClaims};
+    if (selectMethod === "Agile"){ claims = agileClaims};
+
     const handleSubmit = () => {
-
-        console.log(selectMethod, selectClaims, startYear, endYear);
-
-        // if (SearchTitle?.length !== 0 && SearchTitle !== null && SearchTitle !== "") {
-        //     let UserInput: IUserInput = {
-        //         SearchTitle: SearchTitle,
-        //         SearchYear: SearchYear,
-        //         SearchType: SearchType,
-        //     }
-        //     props.SetUserInput(UserInput);
-        // } else {
-        //     setHasFocus(true);
-        // }
+        if (selectMethod && selectClaims && startYear && endYear ) {
+            let UserInput = {
+                selectMethod: selectMethod,
+                selectClaims: selectClaims,
+                startYear: startYear,
+                endYear: endYear
+            }
+            // props.SetUserInput(UserInput);
+            console.log(UserInput);
+        } else {
+            setHasFocus(true);
+        }
     }
 
     return (
@@ -74,7 +83,7 @@ function Search() {
                         <MenuItem value="" >
                             <em>Please select one method.</em>
                         </MenuItem>
-                        {[...Array(30).keys()].map(i => { return <MenuItem key={i} value={2020 - i}>{2020 - i}</MenuItem> })}
+                        {methods.map(method => { return <MenuItem key={method} value={method}>{method}</MenuItem> })}
                     </TextField>
                 </Grid>
                 <Grid item xs={6}>
@@ -92,7 +101,7 @@ function Search() {
                         <MenuItem value="" >
                             <em>Please select at least one claim.</em>
                         </MenuItem>
-                        {[...Array(30).keys()].map(i => { return <MenuItem key={i} value={2020 - i}>{2020 - i}</MenuItem> })}
+                        {claims.map(claim => { return <MenuItem key={claim} value={claim}>{claim}</MenuItem> })}
                     </TextField>
                 </Grid>
                 <Grid item xs={4} id="StartYear" >
@@ -100,8 +109,10 @@ function Search() {
                     <TextField
                         required
                         type="number"
+                        InputProps={{ inputProps: { min: 1990, max: nowYear } }}
                         id="StartYear"
                         variant="outlined"
+                        className="YearItem"
                         error={HasFocus && startYear === ""}
                         onClick={() => setHasFocus(true)}
                         value={startYear}
@@ -113,8 +124,10 @@ function Search() {
                     <TextField
                         required
                         type="number"
+                        InputProps={{ inputProps: { min: 1990, max: nowYear } }}
                         id="EndYear"
                         variant="outlined"
+                        className="YearItem"
                         error={HasFocus && endYear === ""}
                         onClick={() => setHasFocus(true)}
                         value={endYear}

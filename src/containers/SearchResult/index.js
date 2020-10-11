@@ -22,7 +22,7 @@ const SearchResult = () => {
     const classes = useStyles();
   return (
     <Card className={classes.root}>
-        <Grid xs="3" >
+        <Grid item xs={3} >
             <CardContent className={classes.content} >
                 <Typography variant="h5" component="h2">
                 Title
@@ -43,7 +43,7 @@ const SearchResult = () => {
                 </CardActions>
             </CardContent>
         </Grid>
-        <Grid xs="9" >
+        <Grid item xs={9} >
             <CardContent className={classes.content} >
                 <Typography variant="h5" component="h2">
                     Title

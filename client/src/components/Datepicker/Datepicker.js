@@ -37,6 +37,7 @@ export default function DatePicker(props) {
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined,
   });
+
   return (
     <FormControl
       {...formControlProps}
@@ -59,7 +60,7 @@ export default function DatePicker(props) {
           disabled: classes.disabled,
           underline: underlineClasses,
         }}
-        defaultValue={new Date().toDateString()}
+        defaultValue={new Date().toLocaleDateString("zh-CN")}
         id={id}
         {...inputProps}
       />

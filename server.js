@@ -11,7 +11,13 @@ app.get('/api/article', (req, res) => {
 app.post('/api/user', (req, res) => {
   console.log(req.body);
   res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
+    [
+    ["1", "Dakota Rice", "Applying TDD in agile development ", "1203"],
+    ["2", "Dakota Rice", "Applying TDD in agile development ", "500"],
+    ["3", "Dakota Rice", "Applying TDD in agile development ", "400"],
+    ["4", "Dakota Rice", "Applying TDD in agile development ", "399"],
+    ["5", "Minerva Hooper", "Applying TDD in agile development", "370"],
+  ]
   );
 });
 

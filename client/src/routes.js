@@ -27,6 +27,7 @@ import DashboardPage from "views/Dashboard/Dashboard";
 import Browse from "views/Browse/Browse";
 import Search from "views/Search/Search";
 import SubmitCliam from "views/Submit/SubmitClaim";
+import Tt from "views/Test/Tt";
 import Icons from "views/Icons/Icons";
 // core components/views for RTL layout
 
@@ -61,6 +62,14 @@ const dashboardRoutes = [
     rtlName: "طباعة",
     icon: AddChart,
     component: SubmitCliam,
+    layout: "/admin",
+  },
+  {
+    path: "/test",
+    name: "Test Page",
+    rtlName: "طباعة",
+    icon: AddChart,
+    component: Tt,
     layout: "/admin",
   },
   {

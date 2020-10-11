@@ -20,6 +20,8 @@ export default function CustomSelect(props) {
     formControlProps,
     labelText,
     id,
+    name,
+    onChange,
     labelProps,
     inputProps,
     data,
@@ -60,6 +62,8 @@ export default function CustomSelect(props) {
           underline: underlineClasses,
         }}
         id={id}
+        name={name? name:id}
+        onChange={onChange}
         {...inputProps}
       >
         {data.map((item, index) => (
@@ -82,6 +86,8 @@ CustomSelect.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   data: PropTypes.array,

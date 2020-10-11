@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -48,12 +48,39 @@ const styles = {
   },
 };
 
+
 const useStyles = makeStyles(styles);
 
 export default function Search()  {
   const classes = useStyles();
+
+  const [list, setList] = useState([]);
+  const [post, setPost] = useState({});
+
+  const handleChange = (event) =>{
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    setPost(Object.assign({},post,{[name]:value}));
+  };
+
+  const  handleSubmit = async e => {
+    console.log(post);
+    e.preventDefault();
+      const response = await fetch('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+        body: JSON.stringify(post),
+    });
+    const body = await response.text();
+    setList(JSON.parse(body));
+  };
+ 
   return (
     <GridContainer>
+    <form onSubmit={handleSubmit}>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
@@ -64,7 +91,8 @@ export default function Search()  {
               <GridItem xs={12} sm={12} md={12}>
                 <CustomInput
                   labelText="Claims"
-                  id="company-disabled"
+                  id="claims"
+                  onChange={handleChange}
                   formControlProps={{
                     fullWidth: true,
                   }}
@@ -75,8 +103,9 @@ export default function Search()  {
               </GridItem>
               <GridItem xs={12} sm={12} md={3}>
                 <CustomSelect
-                  labelText="Words"
-                  id="words"
+                  labelText="Catolog"
+                  id="catolog"
+                  onChange={handleChange}
                   data={LibDB}
                   formControlProps={{
                     fullWidth: true,
@@ -87,6 +116,7 @@ export default function Search()  {
                 <DatePicker
                   labelText="Published date"
                   id="datePublished"
+                  onChange={handleChange}
                   type="date"
                   formControlProps={{
                     fullWidth: true,
@@ -97,7 +127,9 @@ export default function Search()  {
                 <CustomSelect
                   labelText="Source database"
                   id="sourcedb"
+                  onChange={handleChange}
                   data={LibDB}
+                  defaultValue="ACM"
                   formControlProps={{
                     fullWidth: true,
                   }}
@@ -106,10 +138,11 @@ export default function Search()  {
             </GridContainer>
           </CardBody>
           <CardFooter>
-            <Button color="primary"> Search </Button>
+            <Button type="submit" color="primary" > Search </Button>
           </CardFooter>
         </Card>
       </GridItem>
+    </form>
       <GridItem xs={12} sm={12} md={12}>
         <Card plain>
           <CardHeader plain color="primary">
@@ -119,7 +152,7 @@ export default function Search()  {
             <Table
               tableHeaderColor="primary"
               tableHead={metaEvidences.head}
-              tableData={metaEvidences.data}
+              tableData={list}
             />
           </CardBody>
         </Card>

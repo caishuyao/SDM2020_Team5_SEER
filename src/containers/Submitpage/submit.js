@@ -24,9 +24,10 @@ const SubmitForm = () => {
             onSubmit={handleSubmit}
            
             render={(formRenderProps) => (
+              //className={'k-form-fieldset'}  className={'k-form-legend'}
                 <FormElement >
-                    <fieldset className={'k-form-fieldset'}>
-                        <legend className={'k-form-legend'}>Submitter form of SEER</legend>
+                    <fieldset >
+                        <legend >Submitter form of SEER</legend>
                         <Field
                             id={'title'}
                             name={'title'}
@@ -47,7 +48,7 @@ const SubmitForm = () => {
                             id={'doi'}
                             name={'doi'}
                             label={'DOI'}
-                         //   mask={'(99999999999999999) 00000000000000000000000000'}
+                        
                             hint={'Hint: Please insert right DOI.'}
                             component={FormMaskedTextBox}
                             validator={phoneValidator}
@@ -126,8 +127,12 @@ const SubmitForm = () => {
         />
     );
 };
-/*ReactDOM.render(
-    <SubmitForm />,
-    document.querySelector('my-app')
-);*/
+
+
+
+      
+     
+
+ 
+
 export default SubmitForm;

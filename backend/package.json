@@ -2,7 +2,7 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
-    "client": "cd frontend && yarn start",
+    "client": "cd front && yarn start",
     "server": "cd backend && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },

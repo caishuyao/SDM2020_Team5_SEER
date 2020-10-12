@@ -6,6 +6,10 @@
     width: 400px;
 }
 
+.YearItem {
+    width: 200px;
+}
+
 #StartYear {
     margin: auto;
 }

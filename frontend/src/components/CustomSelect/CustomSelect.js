@@ -41,6 +41,7 @@ export default function CustomSelect(props) {
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined,
   });
+
   return (
     <FormControl
       {...formControlProps}
@@ -65,11 +66,11 @@ export default function CustomSelect(props) {
         onChange={onChange}
         {...inputProps}
       >
-        {data.map((item, index) => (
+        {data && data.map ? data.map((item, index) => (
           <MenuItem key={index} value={item.value}>
             {item.name}
           </MenuItem>
-        ))
+        )):null
         }
    </Select>
       {error ? (

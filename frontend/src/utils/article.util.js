@@ -4,18 +4,20 @@ const  articles2array = async (articles,idx) =>{
             idx = 1;
         }
         var data = await articles.json();
+        console.log(data);
+
         return  data.map((row,index)=> [idx+index,row['author'],row['title'], row['likes']]);
  };
 
 //
-const postArticles = async (post)=>{
+const postArticles = async (post)=> {
     return fetch('/api/article', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
         body: JSON.stringify(post),
-    }).then((response)=>articles2array(response()));
+    }).then((response) => response.status===200 ? articles2array(response) : []);
 };
 
 const fetchArticles = async (post) => {
@@ -26,7 +28,7 @@ const fetchArticles = async (post) => {
       headers: {
         'Content-Type': 'application/json',
       }
-     }).then((response) => articles2array(response));
+    }).then((response) => response.status===200 ? articles2array(response) : []);
 };
 
 export { fetchArticles, postArticles };

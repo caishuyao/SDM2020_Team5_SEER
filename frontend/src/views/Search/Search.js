@@ -113,6 +113,7 @@ export default function Search()  {
                   labelText="Practice"
                   id="practice"
                   onChange={handleChange}
+                  value=""
                   data={Practices}
                   formControlProps={{
                     fullWidth: true,
@@ -124,8 +125,8 @@ export default function Search()  {
                   labelText="Claims"
                   id="claims"
                   onChange={handleChange}
+                  value=""
                   data={claims}
-                  defaultValue="ACM"
                   formControlProps={{
                     fullWidth: true,
                   }}
@@ -155,7 +156,7 @@ export default function Search()  {
               </GridItem>
               <GridItem xs={12} sm={12} md={12}>
                 <Slider
-                value={[1980, 2000]}
+                value={[beginYear, endYear]}
                 onChange={handleRangeChange}
                 aria-labelledby="range-slider"
                 valueLabelDisplay="auto"

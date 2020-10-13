@@ -6,6 +6,7 @@ import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
+import CustomSlider from "components/CustomSlider/CustomSlider.js";
 import DatePicker from "components/Datepicker/Datepicker";
 import Button from "components/CustomButtons/Button.js";
 import Table from "components/Table/Table.js";
@@ -51,6 +52,7 @@ const styles = {
 };
 
 const curYear = 1900+(new Date().getYear());
+const minYear = 1980;
 const useStyles = makeStyles(styles);
 
 export default function Search()  {
@@ -64,6 +66,7 @@ export default function Search()  {
   const [post, setPost] = useState({});
 
   const handleRangeChange = (event, newValue) => {
+    console.log(newValue);
     setBeginYear(newValue[0]);
     setEndYear(newValue[1]);
   };
@@ -150,13 +153,13 @@ export default function Search()  {
                   }}
                 />
               </GridItem>
-              <GridItem xs={12} sm={12} md={8}>
-              <Slider
-                value={[beginYear, endYear]}
+              <GridItem xs={12} sm={12} md={12}>
+                <Slider
+                value={[1980, 2000]}
                 onChange={handleRangeChange}
                 aria-labelledby="range-slider"
                 valueLabelDisplay="auto"
-                min="1960"
+                min={minYear}
                 max={curYear}
               />
               </GridItem>

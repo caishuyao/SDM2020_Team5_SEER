@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import { Select, MenuItem } from "@material-ui/core";
+import { Slider } from "@material-ui/core";
 // @material-ui/icons
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
@@ -14,7 +14,7 @@ import styles from "assets/jss/material-dashboard-react/components/customInputSt
 
 const useStyles = makeStyles(styles);
 
-export default function CustomSelect(props) {
+export default function CustomSlider(props) {
   const classes = useStyles();
   const {
     formControlProps,
@@ -55,7 +55,7 @@ export default function CustomSelect(props) {
           {labelText}
         </InputLabel>
       ) : null}
-      <Select
+      <Slider
         classes={{
           root: marginTop,
           disabled: classes.disabled,
@@ -64,14 +64,7 @@ export default function CustomSelect(props) {
         name={name? name:id}
         onChange={onChange}
         {...inputProps}
-      >
-        {data.map((item, index) => (
-          <MenuItem key={index} value={item.value}>
-            {item.name}
-          </MenuItem>
-        ))
-        }
-   </Select>
+     />
       {error ? (
         <Clear className={classes.feedback + " " + classes.labelRootError} />
       ) : success ? (
@@ -81,7 +74,7 @@ export default function CustomSelect(props) {
   );
 }
 
-CustomSelect.propTypes = {
+CustomSlider.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,

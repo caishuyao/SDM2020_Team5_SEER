@@ -2,24 +2,28 @@ import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import CustomSelect from "components/CustomSelect/CustomSelect.js";
-import CustomSlider from "components/CustomSlider/CustomSlider.js";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
+import CustomInput from "components/CustomInput/CustomInput";
+import CustomSelect from "components/CustomSelect/CustomSelect";
+import CustomMulSel from "components/CustomSelect/CustomMulSel";
+import CustomSlider from "components/CustomSlider/CustomSlider";
 import DatePicker from "components/Datepicker/Datepicker";
-import Button from "components/CustomButtons/Button.js";
-import Table from "components/Table/Table.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
+import Button from "components/CustomButtons/Button";
+import Table from "components/Table/Table";
+import Card from "components/Card/Card";
+import CardHeader from "components/Card/CardHeader";
+import CardBody from "components/Card/CardBody";
+import CardFooter from "components/Card/CardFooter";
 
-import Slider from '@material-ui/core/Slider';
-
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+import Slider from "@material-ui/core/Slider";
+import TextField from '@material-ui/core/TextField';
 import { LibDB, Practices, Claims } from "variables/general";
-import { metaEvidences } from "variables/charts.js";
+import { metaEvidences } from "variables/charts";
 import { fetchArticles } from "utils/article.util";
+import { validateLocaleAndSetLanguage } from "typescript";
 
 const styles = {
   cardCategoryWhite: {
@@ -60,15 +64,14 @@ export default function Search()  {
 
   const [period, setPeriod] = useState(5);
   const [claims, setClaims] = useState([]);
-  const [beginYear, setBeginYear] = useState(2020);
-  const [endYear, setEndYear] = useState(2015);
+  const [beginYear, setBeginYear] = useState(curYear-4);
+  const [endYear, setEndYear] = useState(curYear);
   const [list, setList] = useState([]);
   const [post, setPost] = useState({});
 
   const handleRangeChange = (event, newValue) => {
-    console.log(newValue);
-    setBeginYear(newValue[0]);
-    setEndYear(newValue[1]);
+      setBeginYear(newValue[0]);
+      setEndYear(newValue[1]);
   };
 
   const handleChange = (event) =>{
@@ -85,7 +88,26 @@ export default function Search()  {
       setEndYear(value);
     }
   };
+  const validate = (e)=>{
+    console.log(e);
+    var value = e.target.value;
+    if(value<minYear){
+      e.target.value=minYear;
+    }
+  }
 
+  const quickYear0 = () =>{
+      setBeginYear(curYear);
+      setEndYear(curYear);
+    };
+  const quickYear5 = () =>{
+      setBeginYear(curYear-4);
+      setEndYear(curYear);
+    };
+  const quickYear10 = () =>{
+      setBeginYear(curYear-9);
+      setEndYear(curYear);
+    };
   const  handleSubmit = async e => {
     var result = await fetchArticles(post);
     setList(result);
@@ -125,7 +147,6 @@ export default function Search()  {
                   labelText="Claims"
                   id="claims"
                   onChange={handleChange}
-                  value=""
                   data={claims}
                   formControlProps={{
                     fullWidth: true,
@@ -133,25 +154,59 @@ export default function Search()  {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                <CustomInput
-                  labelText="Begin Year"
-                  id="beginYear"
-                  value={beginYear}
-                  onChange={handleChange}
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
+                <TextField
+                   id="beginYear"
+                   name="beginYear"
+                   label="Begin Year"
+                   type="number"
+                   value={beginYear}
+                   onChange = {handleChange}
+                   InputLabelProps={{
+                     shrink: true,
+                   }}
+                 />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                 <TextField
+                   id="endYear"
+                   name="endYear"
+                   label="End Year"
+                   type="number"
+                   value={endYear}
+                   onChange = {handleChange}
+                   InputLabelProps={{
+                     shrink: true,
+                   }}
+                 />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <Chip avatar={<Avatar>T</Avatar>}
+                      label="  This    Year  "
+                      clickable
+                      color="primary"
+                      id="btnThisYear"
+                      name="btnThisYear"
+                      onClick={quickYear0}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                <CustomInput
-                  labelText="End Year"
-                  id="endYear"
-                  value={endYear}
-                  onChange={handleChange}
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
+                 <Chip avatar={<Avatar>5</Avatar>}
+                      label="  Last  5  Years  "
+                      clickable
+                      color="primary"
+                      id="btnLast5Years"
+                      name="btnLast5Years"
+                      onClick={quickYear5}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <Chip avatar={<Avatar>10</Avatar>}
+                      label="  Last  10  Years  "
+                      clickable
+                      color="primary"
+                      id="btnLast10Years"
+                      name="btnLast10Years"
+                      onClick={quickYear10}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={12}>
@@ -167,7 +222,7 @@ export default function Search()  {
             </GridContainer>
           </CardBody>
           <CardFooter >
-            <Button type="submit" color="primary" onClick={handleSubmit} > Search </Button>
+            <Button color="primary" onClick={handleSubmit} > Search </Button>
           </CardFooter>
         </Card>
       </GridItem>

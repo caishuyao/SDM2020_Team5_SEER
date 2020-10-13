@@ -5,16 +5,35 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
-import { Select, MenuItem } from "@material-ui/core";
+import { Select, MenuItem, Input} from "@material-ui/core";
+import Chip from '@material-ui/core/Chip';
+
 // @material-ui/icons
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/customInputStyle.js";
 
-const useStyles = makeStyles(styles);
+//const useStyles = makeStyles(styles);
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    maxWidth: 300,
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  chip: {
+    margin: 2,
+  },
+  noLabel: {
+    marginTop: theme.spacing(3),
+  },
+}));
 
-export default function CustomSelect(props) {
+export default function CustomMulSel(props) {
   const classes = useStyles();
   const {
     formControlProps,
@@ -58,16 +77,24 @@ export default function CustomSelect(props) {
         </InputLabel>
       ) : null}
       <Select
-        classes={{
-          root: marginTop,
-          disabled: classes.disabled,
-        }}
-        id={id}
-        name={name? name:id}
-        onChange={onChange}
-        onBlur={onBlur}
-        {...inputProps}
-      >
+          id={id}
+          name={name? name:id}
+          multiple
+          classes={{
+              root: marginTop,
+              disabled: classes.disabled,
+          }}
+          onChange={onChange}
+          onBlur={onBlur}
+          input={<Input id="select-multiple-chip" />}
+          renderValue={(selected) => (
+            <div className={classes.chips}>
+              {selected.map((value) => (
+                <Chip key={value} label={value} className={classes.chip} />
+              ))}
+            </div>
+          )}
+        >
         {data && data.map ? data.map((item, index) => (
           <MenuItem key={index} value={item.value}>
             {item.name}
@@ -84,7 +111,7 @@ export default function CustomSelect(props) {
   );
 }
 
-CustomSelect.propTypes = {
+CustomMulSel.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,

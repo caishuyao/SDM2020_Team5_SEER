@@ -17,6 +17,7 @@ import CardFooter from "components/Card/CardFooter.js";
 //import backend from "variables/general";
 import { LibDB } from "variables/general";
 import { metaEvidences } from "variables/charts.js";
+import fetchArticles from "utils/article.util";
 
 const styles = {
   cardCategoryWhite: {
@@ -67,20 +68,14 @@ export default function Search()  {
   const  handleSubmit = async e => {
     console.log(post);
     e.preventDefault();
-      const response = await fetch('/api/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-        body: JSON.stringify(post),
-    });
-    const body = await response.text();
-    setList(JSON.parse(body));
+    var result = fetchArticles(post);
+  console.log(result);
+    setList(result);
+
   };
  
   return (
     <GridContainer>
-    <form onSubmit={handleSubmit}>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
@@ -138,11 +133,10 @@ export default function Search()  {
             </GridContainer>
           </CardBody>
           <CardFooter>
-            <Button type="submit" color="primary" > Search </Button>
+            <Button type="submit" color="primary" onClick={handleSubmit} > Search </Button>
           </CardFooter>
         </Card>
       </GridItem>
-    </form>
       <GridItem xs={12} sm={12} md={12}>
         <Card plain>
           <CardHeader plain color="primary">

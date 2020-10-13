@@ -18,8 +18,6 @@ var server = [
   'Sign contract for "What are conference organizers afraid of?"'
 ];
 
-const backend = {host:"http://localhost:8080/seer/submit"};
-
 const LibDB = [
    {value:'ACM', name:'ACM Digital Library'},
    {value:'AIS', name:'AIS eLibrary'},
@@ -47,6 +45,5 @@ module.exports = {
   bugs,
   website,
   server,
-  backend,
   LibDB,
 };

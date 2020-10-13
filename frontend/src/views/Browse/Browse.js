@@ -1,14 +1,15 @@
-import {React, useState, useEffect } from "react";
+import React from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import Table from "components/Table/Table.js";
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-import { metaEvidences } from "variables/charts.js";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
+import Table from "components/Table/Table";
+import Card from "components/Card/Card";
+import CardHeader from "components/Card/CardHeader";
+import CardBody from "components/Card/CardBody";
+import { metaEvidences } from "variables/charts";
+import fetchArticles from "utils/article.util";
 
 const styles = {
   cardCategoryWhite: {
@@ -43,18 +44,18 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Browse() {
+
   const classes = useStyles();
-  const [list,setList] = useState([]);
 
-  const searchData = async ()=>{
-      const response = await fetch('/api/article');
-      const articles = await response.json();
-      setList(articles);
-  };
 
-  useEffect(async () => {
-    searchData();
+  const [list,setList] = React.useState([]);
+
+
+  React.useEffect(() => {
+    setList(fetchArticles({}));
   }, []);
+
+
 
   return (
     <GridContainer>

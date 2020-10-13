@@ -1,37 +1,37 @@
-// ArticlesControllers.js
-import { Article } from ('./Article.model');
+const Article= require('../models/Article');
 
 // Defining all methods and business logic for routes
 
-	const findAll = (req, res) => {
+module.exports = {
+	findAll: function(req, res) {
+		console.log('get request find all matched records:',req.query);
 		Article.find(req.query)
 			.then(articles => res.json(articles))
 			.catch(err => res.status(422).json(err));
-	};
-
-	const findById = (req, res)=>{
+	},
+	findById: function(req, res) {
+		console.log('get request find by idrecords:',req.query);
 		Article.findById(req.params.id)
 			.then(article => res.json(article))
 			.catch(err => res.status(422).json(err));
-	};
-
-	const create = (req, res) => {
+	},
+	create: function(req, res) {
+		console.log('get request create records:',req.body);
 		Article.create(req.body)
 			.then(newArticle => res.json(newArticle))
 			.catch(err => res.status(422).json(err));
-	};
-
-	const update = (req, res) => {
+	},
+	update: function(req, res) {
+		console.log('get request update records:',req.query);
 		Article.findOneAndUpdate({ _id: req.params.id }, req.body)
 			.then(article => res.json(article))
 			.catch(err => res.status(422).json(err));
-	};
-
-	const remove = (req, res) => {
+	},
+	remove: function(req, res) {
+		console.log('get request remove record')
 		Article.findById({ _id: req.params.id })
 			.then(article => article.remove())
-			.then(allarticles => res.json(allarticles))
+			.then(allArticles => res.json(allArticles))
 			.catch(err => res.status(422).json(err));
-	};
-
-export default {findAll, findById, create, update, remove};
+	}
+};

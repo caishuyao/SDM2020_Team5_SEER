@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "client": "cd frontend && yarn start",
-    "server": "cd backend && nodemon server.js",
+    "server": "cd backend && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
@@ -12,5 +12,6 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1"
-  }
+  },
+  "license": "MIT"
 }

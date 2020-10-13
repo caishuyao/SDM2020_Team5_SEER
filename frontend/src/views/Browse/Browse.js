@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -44,6 +44,18 @@ const useStyles = makeStyles(styles);
 
 export default function Browse() {
   const classes = useStyles();
+  const [list,setList] = useState([]);
+
+  const searchData = async ()=>{
+      const response = await fetch('/api/article');
+      const articles = await response.json();
+      setList(articles);
+  };
+
+  useEffect(async () => {
+    searchData();
+  }, []);
+
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
@@ -55,7 +67,7 @@ export default function Browse() {
             <Table
               tableHeaderColor="primary"
               tableHead={metaEvidences.head}
-              tableData={metaEvidences.data}
+              tableData={list}
             />
           </CardBody>
         </Card>

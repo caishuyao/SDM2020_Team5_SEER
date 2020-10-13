@@ -1,20 +1,18 @@
 // routes for article
 
-import { Article } from "./Article";
+import express from 'express';
 
-class ArticleRoutes {
-    route(app) {
-      app.get('api/article/',Article.list);
+const ArticleRouter = express.Router();
 
-      app.get('api/article/test',(req, res) => {
-          res.status(200).json({message:"Get Request successful"});
-      });
+import {findAll, create, findById, update, remove} from './Article.controller';
 
-      app.post('api/article/test',(req, res) => {
-          res.status(200).json({message:"Post Request successful"});
-      });
+ArticleRouter.route('/')
+             .get(findAll)
+             .post(create);
 
-    }
-}
+ArticleRouter.route('/:id')
+             .get(findById)
+             .put(update)
+	         .delete(remove);
 
-export default ArticleRoutes;
+export default ArticleRouter;

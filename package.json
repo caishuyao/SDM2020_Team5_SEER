@@ -1,7 +1,9 @@
 {
-  "name": "sdm",
-  "version": "0.1.0",
-  "private": true,
+  "name": "SEER",
+  "version": "1.9.0",
+  "description": "SEER - TEAM 5",
+  "private": false,
+  "main": "dist/index.js",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@progress/kendo-drawing": "^1.9.2",
@@ -36,11 +38,36 @@
     "lint": "eslint src/**/*.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
+    "build-package": "npm run build-package-css && babel src --out-dir dist"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caishuyao/SDM2020_Team5_SEER.git"
+  },
+  "keywords": [],
+  "author": "SEER TEAM 5",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/caishuyao/SDM2020_Team5_SEER/issues"
+  },
+  "optionalDependencies": {
+    "@types/googlemaps": "3.39.6",
+    "@types/markerclustererplus": "2.1.33",
+    "ajv": "6.12.2",
+    "typescript": "3.9.3"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-prettier": "3.1.3",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
+    "prettier": "2.0.5"
   },
   "browserslist": {
     "production": [
@@ -48,22 +75,6 @@
       "not dead",
       "not op_mini all"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "babel-loader": "^8.1.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.21.3",
-    "eslint-plugin-react-hooks": "^4.1.2",
-    "jest": "^26.4.2",
-    "lint": "^0.7.0"
+    "development": []
   }
 }

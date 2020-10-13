@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -14,10 +14,11 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
-//import backend from "variables/general";
-import { LibDB } from "variables/general";
+import Slider from '@material-ui/core/Slider';
+
+import { LibDB, Practices, Claims } from "variables/general";
 import { metaEvidences } from "variables/charts.js";
-import fetchArticles from "utils/article.util";
+import { fetchArticles } from "utils/article.util";
 
 const styles = {
   cardCategoryWhite: {
@@ -49,31 +50,52 @@ const styles = {
   },
 };
 
-
+const curYear = 1900+(new Date().getYear());
 const useStyles = makeStyles(styles);
 
 export default function Search()  {
   const classes = useStyles();
 
+  const [period, setPeriod] = useState(5);
+  const [claims, setClaims] = useState([]);
+  const [beginYear, setBeginYear] = useState(2020);
+  const [endYear, setEndYear] = useState(2015);
   const [list, setList] = useState([]);
   const [post, setPost] = useState({});
+
+  const handleRangeChange = (event, newValue) => {
+    setBeginYear(newValue[0]);
+    setEndYear(newValue[1]);
+  };
 
   const handleChange = (event) =>{
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     setPost(Object.assign({},post,{[name]:value}));
+    console.log(["name=",name,"value=",value]);
+    if(name === "practice"){
+      setClaims(value===undefined ? []: Claims[value]);
+    }else if(name === "beginYear"){
+      setBeginYear(value);
+    }else if(name === "endYear"){
+      setEndYear(value);
+    }
   };
 
   const  handleSubmit = async e => {
-    console.log(post);
-    e.preventDefault();
-    var result = fetchArticles(post);
-  console.log(result);
+    var result = await fetchArticles(post);
     setList(result);
-
   };
- 
+/*
+ useEffect(() => {
+    setBeginYear(2020);
+    setEndYear(beginYear-period);
+
+  }, []);
+ */
+
+
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
@@ -84,55 +106,63 @@ export default function Search()  {
           <CardBody>
             <GridContainer>
               <GridItem xs={12} sm={12} md={12}>
-                <CustomInput
+                <CustomSelect
+                  labelText="Practice"
+                  id="practice"
+                  onChange={handleChange}
+                  data={Practices}
+                  formControlProps={{
+                    fullWidth: true,
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={12}>
+                <CustomSelect
                   labelText="Claims"
                   id="claims"
                   onChange={handleChange}
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                  inputProps={{
-                    disabled: false,
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={3}>
-                <CustomSelect
-                  labelText="Catolog"
-                  id="catolog"
-                  onChange={handleChange}
-                  data={LibDB}
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={4}>
-                <DatePicker
-                  labelText="Published date"
-                  id="datePublished"
-                  onChange={handleChange}
-                  type="date"
-                  formControlProps={{
-                    fullWidth: true,
-                  }}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={5}>
-                <CustomSelect
-                  labelText="Source database"
-                  id="sourcedb"
-                  onChange={handleChange}
-                  data={LibDB}
+                  data={claims}
                   defaultValue="ACM"
                   formControlProps={{
                     fullWidth: true,
                   }}
                 />
               </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <CustomInput
+                  labelText="Begin Year"
+                  id="beginYear"
+                  value={beginYear}
+                  onChange={handleChange}
+                  formControlProps={{
+                    fullWidth: true,
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <CustomInput
+                  labelText="End Year"
+                  id="endYear"
+                  value={endYear}
+                  onChange={handleChange}
+                  formControlProps={{
+                    fullWidth: true,
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={12}>
+              <Slider
+                value={[beginYear, endYear]}
+                onChange={handleRangeChange}
+                aria-labelledby="range-slider"
+                valueLabelDisplay="auto"
+                min="1960"
+                max={curYear}
+              />
+              </GridItem>
             </GridContainer>
           </CardBody>
-          <CardFooter>
+          <CardFooter >
             <Button type="submit" color="primary" onClick={handleSubmit} > Search </Button>
           </CardFooter>
         </Card>

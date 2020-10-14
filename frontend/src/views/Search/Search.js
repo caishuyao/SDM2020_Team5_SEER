@@ -78,8 +78,6 @@ export default function Search()  {
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    setPost(Object.assign({},post,{[name]:value}));
-    console.log(["name=",name,"value=",value]);
     if(name === "practice"){
       setClaims(value===undefined ? []: Claims[value]);
     }else if(name === "beginYear"){
@@ -87,6 +85,10 @@ export default function Search()  {
     }else if(name === "endYear"){
       setEndYear(value);
     }
+    console.log(beginYear,endYear);
+    setPost(Object.assign({},post,{[name]:value}));
+    console.log(post);
+    console.log(["name=",name,"value=",value]);
   };
   const validate = (e)=>{
     console.log(e);

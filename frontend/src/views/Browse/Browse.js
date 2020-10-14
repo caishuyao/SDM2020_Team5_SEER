@@ -9,7 +9,7 @@ import Card from "components/Card/Card";
 import CardHeader from "components/Card/CardHeader";
 import CardBody from "components/Card/CardBody";
 import { metaEvidences } from "variables/charts";
-import { fetchArticles, fetchArticles1 } from "utils/article.util";
+import { fetchArticles} from "utils/article.util";
 
 const styles = {
   cardCategoryWhite: {

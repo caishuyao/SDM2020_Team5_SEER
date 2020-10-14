@@ -10,7 +10,7 @@ const articleSchema = new Schema({
         type:String,
         required:false,
     },
-    dataPublished:{
+    yearPublished:{
         type:String,
         required:false,
     },
@@ -27,7 +27,7 @@ const articleSchema = new Schema({
         type:String,
         required:false,
     },
-    dio: {
+    doi: {
         type:String,
         required:false,
     },

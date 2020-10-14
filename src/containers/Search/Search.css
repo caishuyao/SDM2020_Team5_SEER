@@ -1,0 +1,19 @@
+.SearchBarContainer {
+    margin: 20px auto;
+}
+
+.MenuItem {
+    width: 400px;
+}
+
+.YearItem {
+    width: 200px;
+}
+
+#StartYear {
+    margin: auto;
+}
+
+/* #EndYear {
+    margin: auto;
+} */

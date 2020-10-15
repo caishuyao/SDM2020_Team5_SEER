@@ -19,6 +19,7 @@ import CardFooter from "components/Card/CardFooter";
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Slider from "@material-ui/core/Slider";
+import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
 import { LibDB, Practices, Claims } from "variables/general";
 import { metaEvidences } from "variables/charts";
@@ -55,11 +56,11 @@ const styles = {
   },
 };
 
-const curYear = 1900+(new Date().getYear());
+const curYear = 1900 + (new Date().getYear());
 const minYear = 1980;
 const useStyles = makeStyles(styles);
 
-export default function Search()  {
+export default function Search() {
   const classes = useStyles();
 
   const [sp, setSP] = useState("");
@@ -72,11 +73,11 @@ export default function Search()  {
   //
 
   const handleRangeChange = (event, newValue) => {
-      setBeginYear(newValue[0]);
-      setEndYear(newValue[1]);
+    setBeginYear(newValue[0]);
+    setEndYear(newValue[1]);
   };
 
-  const handleChange = (event) =>{
+  const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -87,7 +88,7 @@ export default function Search()  {
       setClaims(value);
     }else if(name === "beginYear"){
       setBeginYear(value);
-    }else if(name === "endYear"){
+    } else if (name === "endYear") {
       setEndYear(value);
     }
     console.log(beginYear,endYear);
@@ -95,11 +96,11 @@ export default function Search()  {
   //  console.log(post);
   //  console.log(["name=",name,"value=",value]);
   };
-  const validate = (e)=>{
+  const validate = (e) => {
     console.log(e);
     var value = e.target.value;
-    if(value<minYear){
-      e.target.value=minYear;
+    if (value < minYear) {
+      e.target.value = minYear;
     }
   }
 
@@ -163,7 +164,7 @@ export default function Search()  {
                   labelText="Claims"
                   id="claims"
                   onChange={handleChange}
-                  data={claims}
+                  data={claimsList}
                   formControlProps={{
                     fullWidth: true,
                   }}
@@ -171,69 +172,73 @@ export default function Search()  {
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
                 <TextField
-                   id="beginYear"
-                   name="beginYear"
-                   label="Begin Year"
-                   type="number"
-                   value={beginYear}
-                   onChange = {handleChange}
-                   InputLabelProps={{
-                     shrink: true,
-                   }}
-                 />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={2}>
-                 <TextField
-                   id="endYear"
-                   name="endYear"
-                   label="End Year"
-                   type="number"
-                   value={endYear}
-                   onChange = {handleChange}
-                   InputLabelProps={{
-                     shrink: true,
-                   }}
-                 />
-              </GridItem>
-              <GridItem xs={12} sm={12} md={2}>
-                <Chip avatar={<Avatar>T</Avatar>}
-                      label="  This    Year  "
-                      clickable
-                      color="primary"
-                      id="btnThisYear"
-                      name="btnThisYear"
-                      onClick={quickYear0}
+                  id="beginYear"
+                  name="beginYear"
+                  label="Begin Year"
+                  type="number"
+                  value={beginYear}
+                  onChange={handleChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                 <Chip avatar={<Avatar>5</Avatar>}
-                      label="  Last  5  Years  "
-                      clickable
-                      color="primary"
-                      id="btnLast5Years"
-                      name="btnLast5Years"
-                      onClick={quickYear5}
+                <TextField
+                  id="endYear"
+                  name="endYear"
+                  label="End Year"
+                  type="number"
+                  value={endYear}
+                  onChange={handleChange}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <Chip avatar={<Avatar>1</Avatar>}
+                  label="  This    Year  "
+                  clickable
+                  color="primary"
+                  id="btnThisYear"
+                  name="btnThisYear"
+                  onClick={quickYear0}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={2}>
+                <Chip avatar={<Avatar>5</Avatar>}
+                  label="  Last  5  Years  "
+                  clickable
+                  color="primary"
+                  id="btnLast5Years"
+                  name="btnLast5Years"
+                  onClick={quickYear5}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
                 <Chip avatar={<Avatar>10</Avatar>}
-                      label="  Last  10  Years  "
-                      clickable
-                      color="primary"
-                      id="btnLast10Years"
-                      name="btnLast10Years"
-                      onClick={quickYear10}
+                  label="  Last  10  Years  "
+                  clickable
+                  color="primary"
+                  id="btnLast10Years"
+                  name="btnLast10Years"
+                  onClick={quickYear10}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={12}>
+                <br/>
                 <Slider
-                value={[beginYear, endYear]}
-                onChange={handleRangeChange}
-                aria-labelledby="range-slider"
-                valueLabelDisplay="auto"
-                min={minYear}
-                max={curYear}
-              />
+                  value={[beginYear, endYear]}
+                  onChange={handleRangeChange}
+                  aria-labelledby="range-slider"
+                  valueLabelDisplay="auto"
+                  min={minYear}
+                  max={curYear}
+                />
+                <Typography id="yearSlider" >
+                  Drag the dots to choose year.
+                </Typography>
               </GridItem>
             </GridContainer>
           </CardBody>

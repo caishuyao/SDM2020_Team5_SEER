@@ -6,7 +6,7 @@ const  articles2array = async (articles,idx) =>{
         var data = await articles.json();
         console.log(data);
 
-        return  data.map((row,index)=> [idx+index,row['author'],row['title'], row['likes']]);
+        return  data.map((row,index)=> [idx+index,row['author'],row['title'],row['yearPublished'],row['doi'],row['abstract'],row['claims'],row['supportRating']]);
  };
 
 //
@@ -17,7 +17,7 @@ const postArticles = async (post)=> {
         'Content-Type': 'application/json',
       },
         body: JSON.stringify(post),
-    }).then((response) => response.status===200 ? articles2array(response) : []);
+    }).then((response) => response.status===200 ? {retCode:0,retMsg:'A record was created successfully!'}: {retCode:-1,retMsg:'Some error happened, please concat the sysadmin!'});
 };
 
 const fetchArticles = async (post) => {

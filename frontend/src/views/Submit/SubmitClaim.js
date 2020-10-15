@@ -17,7 +17,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import avatar from "assets/img/reactlogo.png";
-import { LibDB, Practices, Claims } from "variables/general";
+import { LibDB, Practices, Claims, SupportRate } from "variables/general";
 import { postArticles } from "utils/article.util";
 
 const styles = {
@@ -44,30 +44,87 @@ const useStyles = makeStyles(styles);
 export default function SubmitClaim() {
   const classes = useStyles();
 
+  const [title, setTitle] = useState();
+  const [author, setAuthor] = useState();
+  const [yearPublished, setYearPublished] = useState();
+  const [sourcedb, setSourcedb] = useState();
+  const [practice, setPractice] = useState();
+  const [claims, setClaims] = useState();
+  const [doi, setDoi] = useState();
+  const [abstract, setAbstract] = useState();
+  const [supportRate, setSupportRate] = useState();
+  const [claimsList, setClaimsList] = useState([]);
+
   const [post, setPost] = useState({});
-  const [claims, setClaims] = useState([]);
+  // const [claims, setClaims] = useState([]);
 
   const [open, setOpen] = useState(false);
 
   const [message, setMessage] = useState("");
 
-  const handleChange = (event) =>{
+  const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    setPost(Object.assign({},post,{[name]:value}));
-    console.log(["name=",name,"value=",value]);
-    if(name === "practice"){
-      setClaims(value===undefined ? []: Claims[value]);
+    switch (name) {
+      case "practice":
+        setPractice(value === undefined ? "" : value);
+        setClaimsList(value === undefined ? [] : Claims[value]);
+        break;
+      case "title":
+        setTitle(value);
+        break;
+      case "author":
+        setAuthor(value);
+        break;
+      case "yearPublished":
+        setYearPublished(value);
+        break;
+      case "sourcedb":
+        setSourcedb(value === undefined ? "" : value);
+        break;
+      case "claims":
+        setClaims(value === undefined ? "" : value);
+        break;
+      case "doi":
+        setDoi(value);
+        break;
+      case "abstract":
+        setAbstract(value);
+        break;
+      case "supportRating":
+        setSupportRate(value === undefined ? "" : value);
+        break;
     }
   };
 
-  const  handleSubmit = async e => {
-    postArticles(post).then((result)=>{
-     setMessage(result);
-    });
+  // const  handleSubmit = async e => {
+  //   postArticles(post).then((result)=>{
+  //    setMessage(result);
+  //   });
+  // };
+
+  const handleSubmit = async e => {
+    var post = getPost();
+    console.log(post);
+    var result = await postArticles(getPost());
+    setMessage(result);
+    setOpen(true);
   };
 
+  const getPost = () => {
+    return {
+      'title': title,
+      'author': author,
+      'yearPublished': yearPublished,
+      'sourcedb': sourcedb,
+      'practice': practice,
+      'claims': claims,
+      'doi': doi,
+      'abstract': abstract,
+      'supportRating': supportRate,
+    }
+  }
 
   function handleClickOpen() {
     setOpen(true);
@@ -81,8 +138,11 @@ export default function SubmitClaim() {
   return (
     <div>
       <CustomDialog title="Submit Result" open={open} onClose={handleClose} >
-        this is a demo result.
-        {message}
+        <Card>
+          <CardHeader color={message.retCode===0?"primary":"danger"}>
+            <h4 className={classes.cardTitleWhite}>{message.retMsg}</h4>
+          </CardHeader>
+        </Card>
       </CustomDialog>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
@@ -117,14 +177,14 @@ export default function SubmitClaim() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
-                   id="yearPublished"
-                   labelText="Published Year"
-                   type="number"
-                   onChange = {handleChange}
-                   formControlProps={{
-                    fullWidth: true,
-                  }}
-                 />
+                    id="yearPublished"
+                    labelText="Published Year"
+                    type="number"
+                    onChange={handleChange}
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                  />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomSelect
@@ -153,14 +213,14 @@ export default function SubmitClaim() {
                     labelText="Claims"
                     id="claims"
                     onChange={handleChange}
-                    data={claims}
-                    defaultValue="ACM"
+                    data={claimsList}
+                    defaultValue=""
                     formControlProps={{
                       fullWidth: true,
                     }}
                   />
                 </GridItem>
-                <GridItem xs={12} sm={12} md={12}>
+                <GridItem xs={12} sm={12} md={9}>
                   <CustomInput
                     labelText="DOI"
                     id="doi"
@@ -170,6 +230,17 @@ export default function SubmitClaim() {
                     }}
                     inputProps={{
                       disabled: false,
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={3}>
+                  <CustomSelect
+                    labelText="Support Rating"
+                    id="supportRating"
+                    onChange={handleChange}
+                    data={SupportRate}
+                    formControlProps={{
+                      fullWidth: true,
                     }}
                   />
                 </GridItem>

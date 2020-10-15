@@ -64,9 +64,16 @@ const Claims = {
         {value:"C8-2", name:"Software developers would benefit from using Moitoring and Logging"}],
 };
 
+const SupportRate = [
+      {value:"1", name:"Low"},
+      {value:"2", name:"Medium"},
+      {value:"3", name:"High"}
+];
+
 module.exports = {
   // these 3 are used to create the tasks lists in TasksCard - Dashboard view
   LibDB,
   Practices,
   Claims,
+  SupportRate
 };

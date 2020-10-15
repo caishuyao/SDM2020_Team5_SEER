@@ -18,7 +18,7 @@ module.exports = {
 	create: function(req, res) {
 		console.log('get request create records:',req.body);
 		Article.create(req.body)
-			.then(newArticle => res.json(newArticle))
+			   .then(newArticle => {console.log(newArticle); return res.json(newArticle);})
 			.catch(err => res.status(422).json(err));
 	},
 	update: function(req, res) {

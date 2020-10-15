@@ -19,11 +19,15 @@ const articleSchema = new Schema({
         required:false,
 
     },
-    claim:{
-        type:String,
+    claims:{
+        type:[String],
         required:false,
     },
     author:{
+        type:String,
+        required:false,
+    },
+    sourcedb:{
         type:String,
         required:false,
     },

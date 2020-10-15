@@ -3,6 +3,7 @@
 // #############################
 
 const LibDB = [
+   {value:"", name:"Please select Database"},
    {value:'ACM', name:'ACM Digital Library'},
    {value:'AIS', name:'AIS eLibrary'},
    {value:'BSO', name:'British Standars Online'},

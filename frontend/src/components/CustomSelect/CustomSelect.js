@@ -21,8 +21,8 @@ export default function CustomSelect(props) {
     labelText,
     id,
     name,
+    value,
     onChange,
-    onBlur,
     labelProps,
     inputProps,
     data,
@@ -64,8 +64,8 @@ export default function CustomSelect(props) {
         }}
         id={id}
         name={name? name:id}
+        value={value||""}
         onChange={onChange}
-        onBlur={onBlur}
         {...inputProps}
       >
         {data && data.map ? data.map((item, index) => (
@@ -89,8 +89,8 @@ CustomSelect.propTypes = {
   labelProps: PropTypes.object,
   id: PropTypes.string,
   name: PropTypes.string,
+  value: PropTypes.string,
   onChange: PropTypes.func,
-  onBlur: PropTypes.func,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   data: PropTypes.array,

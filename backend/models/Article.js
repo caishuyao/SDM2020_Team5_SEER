@@ -31,6 +31,10 @@ const articleSchema = new Schema({
         type:String,
         required:false,
     },
+    supportRating: {
+        type:String,
+        required:false,
+    },
     });
 
 const Article = mongoose.model('Article', articleSchema);

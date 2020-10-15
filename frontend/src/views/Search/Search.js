@@ -63,8 +63,8 @@ const useStyles = makeStyles(styles);
 export default function Search() {
   const classes = useStyles();
 
-  const [sp, setSP] = useState(5);
-  const [claims, setClaims] = useState([]);
+  const [sp, setSP] = useState();
+  const [claims, setClaims] = useState();
   const [claimsList, setClaimsList] = useState([]);
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
@@ -164,7 +164,7 @@ export default function Search() {
                   labelText="Claims"
                   id="claims"
                   onChange={handleChange}
-                  data={claims}
+                  data={claimsList}
                   formControlProps={{
                     fullWidth: true,
                   }}

@@ -11,18 +11,22 @@ const articleSchema = new Schema({
         required:false,
     },
     yearPublished:{
-        type:String,
+        type:Number,
         required:false,
     },
     practice:{
         type:String,
         required:false,
     },
-    claim:{
-        type:String,
+    claims:{
+        type:[String],
         required:false,
     },
     author:{
+        type:String,
+        required:false,
+    },
+    sourcedb:{
         type:String,
         required:false,
     },

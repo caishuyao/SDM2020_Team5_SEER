@@ -5,7 +5,9 @@ const Article= require('../models/Article');
 module.exports = {
 	findAll: function(req, res) {
 		console.log('get request find all matched records:',req.query);
-		Article.find(req.query)
+		var param = JSON.parse(req.query.q);
+		console.log(param);
+		Article.find(param)
 			.then(articles => res.json(articles))
 			.catch(err => res.status(422).json(err));
 	},
@@ -18,7 +20,7 @@ module.exports = {
 	create: function(req, res) {
 		console.log('get request create records:',req.body);
 		Article.create(req.body)
-			.then(newArticle => res.json(newArticle))
+			.then(newArticle => {console.log(newArticle); return res.json(newArticle);})
 			.catch(err => res.status(422).json(err));
 	},
 	update: function(req, res) {

@@ -63,14 +63,14 @@ const useStyles = makeStyles(styles);
 export default function Search() {
   const classes = useStyles();
 
-  const [period, setPeriod] = useState(5);
+  const [sp, setSP] = useState(5);
   const [claims, setClaims] = useState([]);
-  const [beginYear, setBeginYear] = useState(curYear - 4);
+  const [claimsList, setClaimsList] = useState([]);
+  const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
   const [list, setList] = useState([]);
-  const [post, setPost] = useState({
-    
-  });
+  //const [post, setPost] = useState({});
+  //
 
   const handleRangeChange = (event, newValue) => {
     setBeginYear(newValue[0]);
@@ -81,17 +81,20 @@ export default function Search() {
     const target = event.target;
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    if (name === "practice") {
-      setClaims(value === undefined ? [] : Claims[value]);
-    } else if (name === "beginYear") {
+    if(name === "practice"){
+      setSP(value===undefined?"":value);
+      setClaimsList(value===undefined ? []: Claims[value]);
+    }else if(name === "claims"){
+      setClaims(value);
+    }else if(name === "beginYear"){
       setBeginYear(value);
     } else if (name === "endYear") {
       setEndYear(value);
     }
-    console.log(beginYear, endYear);
-    setPost(Object.assign({}, post, { [name]: value }));
-    console.log(post);
-    console.log(["name=", name, "value=", value]);
+    console.log(beginYear,endYear);
+  //  setPost(Object.assign({},post,{[name]:value}));
+  //  console.log(post);
+  //  console.log(["name=",name,"value=",value]);
   };
   const validate = (e) => {
     console.log(e);
@@ -101,29 +104,38 @@ export default function Search() {
     }
   }
 
-  const quickYear0 = () => {
-    setBeginYear(curYear);
-    setEndYear(curYear);
-  };
-  const quickYear5 = () => {
-    setBeginYear(curYear - 4);
-    setEndYear(curYear);
-  };
-  const quickYear10 = () => {
-    setBeginYear(curYear - 9);
-    setEndYear(curYear);
-  };
-  const handleSubmit = async e => {
-    var result = await fetchArticles(post);
+  const quickYear0 = () =>{
+      setBeginYear(curYear);
+      setEndYear(curYear);
+    };
+  const quickYear5 = () =>{
+      setBeginYear(curYear-4);
+      setEndYear(curYear);
+    };
+  const quickYear10 = () =>{
+      setBeginYear(curYear-9);
+      setEndYear(curYear);
+    };
+  const  handleSubmit = async e => {
+    var post = getPost();
+    console.log(post);
+    var result = await fetchArticles(getPost());
     setList(result);
   };
-  /*
-   useEffect(() => {
-      setBeginYear(2020);
-      setEndYear(beginYear-period);
-  
-    }, []);
-   */
+
+  const getPost = ()=>{
+    return  {'practice':sp,
+             'claims':claims,
+             'yearPublished':{$gte:beginYear,$lt:endYear}
+    }
+  }
+/*
+ useEffect(() => {
+    setBeginYear(2020);
+    setEndYear(beginYear-period);
+
+  }, []);
+ */
 
 
   return (

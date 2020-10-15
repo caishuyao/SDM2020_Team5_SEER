@@ -23,7 +23,7 @@ const postArticles = async (post)=> {
 const fetchArticles = async (post) => {
     var params = new URLSearchParams(post).toString();
     console.log(params);
-    return fetch('/api/article', {
+    return fetch('/api/article/?'+params, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

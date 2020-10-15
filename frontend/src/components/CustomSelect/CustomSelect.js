@@ -23,8 +23,8 @@ export default function CustomSelect(props) {
     name,
     value,
     onChange,
-    labelProps,
     inputProps,
+    labelProps,
     data,
     error,
     success,
@@ -64,7 +64,7 @@ export default function CustomSelect(props) {
         }}
         id={id}
         name={name? name:id}
-        value={value||""}
+        value={value}
         onChange={onChange}
         {...inputProps}
       >

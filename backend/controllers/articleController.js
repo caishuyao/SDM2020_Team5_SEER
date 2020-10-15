@@ -6,6 +6,7 @@ module.exports = {
 	findAll: function(req, res) {
 		console.log('get request find all matched records:',req.query);
 		var param = JSON.parse(req.query.q);
+		console.log(param);
 		Article.find(param)
 			.then(articles => res.json(articles))
 			.catch(err => res.status(422).json(err));

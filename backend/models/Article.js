@@ -11,7 +11,7 @@ const articleSchema = new Schema({
         required:false,
     },
     yearPublished:{
-        type:String,
+        type:Number,
         required:false,
     },
     practice:{

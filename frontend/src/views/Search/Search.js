@@ -68,7 +68,8 @@ export default function Search()  {
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
   const [list, setList] = useState([]);
-  const [post, setPost] = useState({});
+  //const [post, setPost] = useState({});
+  //
 
   const handleRangeChange = (event, newValue) => {
       setBeginYear(newValue[0]);
@@ -90,9 +91,9 @@ export default function Search()  {
       setEndYear(value);
     }
     console.log(beginYear,endYear);
-    setPost(Object.assign({},post,{[name]:value}));
-    console.log(post);
-    console.log(["name=",name,"value=",value]);
+  //  setPost(Object.assign({},post,{[name]:value}));
+  //  console.log(post);
+  //  console.log(["name=",name,"value=",value]);
   };
   const validate = (e)=>{
     console.log(e);
@@ -115,13 +116,16 @@ export default function Search()  {
       setEndYear(curYear);
     };
   const  handleSubmit = async e => {
-    var result = await fetchArticles(post);
+    var post = getPost();
+    console.log(post);
+    var result = await fetchArticles(getPost());
     setList(result);
   };
+
   const getPost = ()=>{
     return  {'practice':sp,
-             'claims':'',
-             'dataPublished':{$gte:beginYear,$lt:endYear}
+             'claims':claims,
+             'yearPublished':{$gte:beginYear,$lt:endYear}
     }
   }
 /*

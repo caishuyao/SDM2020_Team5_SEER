@@ -8,7 +8,6 @@ import GridContainer from "components/Grid/GridContainer.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
 import CustomDialog from "components/CustomDialog/CustomDialog";
-import DatePicker from "components/Datepicker/Datepicker";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -55,7 +54,7 @@ export default function SubmitClaim() {
   const [supportRate, setSupportRate] = useState();
   const [claimsList, setClaimsList] = useState([]);
 
-  const [post, setPost] = useState({});
+  // const [post, setPost] = useState({});
   // const [claims, setClaims] = useState([]);
 
   const [open, setOpen] = useState(false);

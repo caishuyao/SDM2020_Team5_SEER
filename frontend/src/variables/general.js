@@ -70,10 +70,18 @@ const SupportRate = [
       {value:"3", name:"High"}
 ];
 
+const sortOption = [
+      {value:"1", name:"Order By Published Year - Latest to Oldest"},
+      {value:"2", name:"Order By Published Year - Oldest to Latest"},
+      {value:"3", name:"Order By Support Rating - High to Low"},
+      {value:"4", name:"Order By Support Rating - Low to High"},
+]
+
 module.exports = {
   // these 3 are used to create the tasks lists in TasksCard - Dashboard view
   LibDB,
   Practices,
   Claims,
-  SupportRate
+  SupportRate,
+  sortOption
 };

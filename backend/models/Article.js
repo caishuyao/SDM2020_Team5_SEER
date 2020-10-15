@@ -17,7 +17,6 @@ const articleSchema = new Schema({
     practice:{
         type:String,
         required:false,
-
     },
     claim:{
         type:String,

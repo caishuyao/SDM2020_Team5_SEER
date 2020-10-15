@@ -49,7 +49,7 @@ export default function SubmitClaim() {
   const [yearPublished, setYearPublished] = useState();
   const [sourcedb, setSourcedb] = useState();
   const [practice, setPractice] = useState();
-  const [claims, setClaims] = useState();
+  const [claim, setClaim] = useState();
   const [doi, setDoi] = useState();
   const [abstract, setAbstract] = useState();
   const [supportRate, setSupportRate] = useState();
@@ -83,8 +83,8 @@ export default function SubmitClaim() {
       case "sourcedb":
         setSourcedb(value === undefined ? "" : value);
         break;
-      case "claims":
-        setClaims(value === undefined ? "" : value);
+      case "claim":
+        setClaim(value === undefined ? "" : value);
         break;
       case "doi":
         setDoi(value);
@@ -119,7 +119,7 @@ export default function SubmitClaim() {
       'yearPublished': yearPublished,
       'sourcedb': sourcedb,
       'practice': practice,
-      'claim': claims,
+      'claim': claim,
       'doi': doi,
       'abstract': abstract,
       'supportRating': supportRate,
@@ -210,8 +210,8 @@ export default function SubmitClaim() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={8}>
                   <CustomSelect
-                    labelText="Claims"
-                    id="claims"
+                    labelText="Claim"
+                    id="claim"
                     onChange={handleChange}
                     data={claimsList}
                     defaultValue=""

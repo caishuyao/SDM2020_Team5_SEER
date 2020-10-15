@@ -19,7 +19,6 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 import AddChart from "@material-ui/icons/Add";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import BubbleChart from "@material-ui/icons/BubbleChart";
 import SearchIcon from "@material-ui/icons/Search";
 
 // core components/views for Admin layout
@@ -28,7 +27,6 @@ import Browse from "views/Browse/Browse";
 import Search from "views/Search/Search";
 import SubmitCliam from "views/Submit/SubmitClaim";
 import Tt from "views/Test/Tt";
-import Icons from "views/Icons/Icons";
 // core components/views for RTL layout
 
 const dashboardRoutes = [
@@ -70,14 +68,6 @@ const dashboardRoutes = [
     rtlName: "طباعة",
     icon: AddChart,
     component: Tt,
-    layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    rtlName: "طباعة",
-    icon: BubbleChart,
-    component: Icons,
     layout: "/admin",
   },
 ];

@@ -116,15 +116,15 @@ export default function SubmitClaim() {
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={3}>
-                  <DatePicker
-                    labelText="Published date"
-                    id="datePublished"
-                    onChange={handleChange}
-                    type="date"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
+                  <CustomInput
+                   id="yearPublished"
+                   labelText="Published Year"
+                   type="number"
+                   onChange = {handleChange}
+                   formControlProps={{
+                    fullWidth: true,
+                  }}
+                 />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={5}>
                   <CustomSelect
@@ -162,8 +162,8 @@ export default function SubmitClaim() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={12}>
                   <CustomInput
-                    labelText="Dio"
-                    id="dio"
+                    labelText="DOI"
+                    id="doi"
                     onChange={handleChange}
                     formControlProps={{
                       fullWidth: true,

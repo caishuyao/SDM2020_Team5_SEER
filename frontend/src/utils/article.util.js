@@ -6,7 +6,7 @@ const  articles2array = async (articles,idx) =>{
         var data = await articles.json();
         console.log(data);
 
-        return  data.map((row,index)=> [idx+index,row['author'],row['title'], row['likes']]);
+        return  data.map((row,index)=> [idx+index,row['author'],row['title'],row['doi'],row['likes']]);
  };
 
 //

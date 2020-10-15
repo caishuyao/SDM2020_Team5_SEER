@@ -146,7 +146,7 @@ const topEvidences = {
 };
 
 const metaEvidences = {
-  head: ["NO.", "Author", "Title", "DOI", "Abstract", "Evidence", "Likes"],
+  head: ["NO.", "Author", "Title", "Published Year", "DOI", "Abstract", "Evidence", "Likes"],
   data: [
     ["1", "Dakota Rice", "Applying TDD in agile development ", "1203"],
     ["2", "Dakota Rice", "Applying TDD in agile development ", "500"],

@@ -62,8 +62,9 @@ const useStyles = makeStyles(styles);
 export default function Search()  {
   const classes = useStyles();
 
-  const [period, setPeriod] = useState(5);
+  const [sp, setSP] = useState(5);
   const [claims, setClaims] = useState([]);
+  const [claimsList, setClaimsList] = useState([]);
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
   const [list, setList] = useState([]);
@@ -81,7 +82,10 @@ export default function Search()  {
     setPost(Object.assign({},post,{[name]:value}));
     console.log(["name=",name,"value=",value]);
     if(name === "practice"){
-      setClaims(value===undefined ? []: Claims[value]);
+      setSP(value===undefined?"":value);
+      setClaimsList(value===undefined ? []: Claims[value]);
+    }else if(name === "claims"){
+      setClaims(value);
     }else if(name === "beginYear"){
       setBeginYear(value);
     }else if(name === "endYear"){
@@ -112,6 +116,12 @@ export default function Search()  {
     var result = await fetchArticles(post);
     setList(result);
   };
+  const getPost = ()=>{
+    return  {'practice':sp,
+             'claims':'',
+             'dataPublished':{$gte:beginYear,$lt:endYear}
+    }
+  }
 /*
  useEffect(() => {
     setBeginYear(2020);

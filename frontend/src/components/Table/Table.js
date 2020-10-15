@@ -18,19 +18,30 @@ const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
   const classes = useStyles();
+  const { tableHead, tableData, tableHeaderColor } = props;
+  const [orderBy, setOrderBy] = useState();
+  const [tableSorted, setTableSorted] = useState(tableData);
 
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('calories');
-
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
+  const handleSort = (e) => {
+    const value = e.target.value;
+    setOrderBy(value);
+    switch (value){
+      case '1':
+        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+      break;
+      case '2':
+        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+      break;
+      case '3':
+        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+      break;
+      case '4':
+        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+      break;
+    }
   };
 
-
-
-  const { tableHead, tableData, tableHeaderColor } = props;
+  
   return (
     <div>
       <GridItem xs={12} sm={12} md={3}>
@@ -39,7 +50,7 @@ export default function CustomTable(props) {
           labelText="Sort by"
           id="orderby"
           data={sortOption}
-          // onChange={handleChange}
+          onChange={handleSort}
           formControlProps={{
             fullWidth: true,
           }}
@@ -64,7 +75,7 @@ export default function CustomTable(props) {
             </TableHead>
           ) : null}
           <TableBody>
-            {tableData.map((prop, key) => {
+            {tableSorted.map((prop, key) => {
               return (
                 <TableRow key={key} className={classes.tableBodyRow}>
                   {prop.map((prop, key) => {

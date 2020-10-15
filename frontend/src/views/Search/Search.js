@@ -91,10 +91,6 @@ export default function Search() {
     } else if (name === "endYear") {
       setEndYear(value);
     }
-    console.log(beginYear,endYear);
-  //  setPost(Object.assign({},post,{[name]:value}));
-  //  console.log(post);
-  //  console.log(["name=",name,"value=",value]);
   };
   const validate = (e) => {
     console.log(e);

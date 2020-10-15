@@ -63,12 +63,12 @@ const useStyles = makeStyles(styles);
 export default function Search() {
   const classes = useStyles();
 
-  const [sp, setSP] = useState();
-  const [claims, setClaims] = useState();
+  const [sp, setSP] = useState("");
+  const [claims, setClaims] = useState([]);
   const [claimsList, setClaimsList] = useState([]);
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
-  const [list, setList] = useState([]);
+  const [resultList, setResultList] = useState([]);
   //const [post, setPost] = useState({});
   //
 
@@ -82,19 +82,20 @@ export default function Search() {
     const name = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     if(name === "practice"){
-      setSP(value===undefined?"":value);
-      setClaimsList(value===undefined ? []: Claims[value]);
+      var v =(value===undefined?"":value);
+      setSP(v);
+      if(v===""){
+        setClaimsList([]);
+        setClaims([]);
+      }
+      setClaimsList(Claims[value]);
     }else if(name === "claims"){
       setClaims(value);
     }else if(name === "beginYear"){
-      setBeginYear(value);
+      setBeginYear(value-0);
     } else if (name === "endYear") {
-      setEndYear(value);
+      setEndYear(value-0);
     }
-    console.log(beginYear,endYear);
-  //  setPost(Object.assign({},post,{[name]:value}));
-  //  console.log(post);
-  //  console.log(["name=",name,"value=",value]);
   };
   const validate = (e) => {
     console.log(e);
@@ -120,23 +121,18 @@ export default function Search() {
     var post = getPost();
     console.log(post);
     var result = await fetchArticles(getPost());
-    setList(result);
+    setResultList(result);
   };
 
   const getPost = ()=>{
-    return  {'practice':sp,
-             'claims':claims,
-             'yearPublished':{$gte:beginYear,$lt:endYear}
-    }
+    var post = {};
+    if(sp){ post['practice'] = sp;}
+    if(claims && claims.length>0){ post['claims'] = claims;}
+    post['yearPublished']={};
+    if(beginYear){ post['yearPublished']["$gte"] = beginYear-0;}
+    if(endYear){ post['yearPublished']["$lte"] = endYear-0;}
+    return post;
   }
-/*
- useEffect(() => {
-    setBeginYear(2020);
-    setEndYear(beginYear-period);
-
-  }, []);
- */
-
 
   return (
     <GridContainer>
@@ -152,7 +148,7 @@ export default function Search() {
                   labelText="Practice"
                   id="practice"
                   onChange={handleChange}
-                  value=""
+                  value={sp}
                   data={Practices}
                   formControlProps={{
                     fullWidth: true,
@@ -163,6 +159,7 @@ export default function Search() {
                 <CustomSelect
                   labelText="Claims"
                   id="claims"
+                  value={claims}
                   onChange={handleChange}
                   data={claimsList}
                   formControlProps={{
@@ -256,7 +253,7 @@ export default function Search() {
             <Table
               tableHeaderColor="primary"
               tableHead={metaEvidences.head}
-              tableData={list}
+              tableData={resultList}
             />
           </CardBody>
         </Card>

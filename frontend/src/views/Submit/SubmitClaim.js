@@ -47,11 +47,11 @@ export default function SubmitClaim() {
   const [title, setTitle] = useState();
   const [author, setAuthor] = useState();
   const [yearPublished, setYearPublished] = useState();
-  const [sourcedb, setSourcedb] = useState();
-  const [practice, setPractice] = useState();
-  const [claims, setClaims] = useState();
+  const [sourcedb, setSourcedb] = useState("ACM");
+  const [practice, setPractice] = useState("");
+  const [claims, setClaims] = useState([]);
   const [doi, setDoi] = useState();
-  const [abstract, setAbstract] = useState();
+  const [abstract, setAbstract] = useState("");
   const [supportRate, setSupportRate] = useState();
   const [claimsList, setClaimsList] = useState([]);
 
@@ -84,7 +84,7 @@ export default function SubmitClaim() {
         setSourcedb(value === undefined ? "" : value);
         break;
       case "claims":
-        setClaims(value === undefined ? "" : value);
+        setClaims(value === undefined ? [] :[value]);
         break;
       case "doi":
         setDoi(value);
@@ -98,17 +98,14 @@ export default function SubmitClaim() {
     }
   };
 
-  // const  handleSubmit = async e => {
-  //   postArticles(post).then((result)=>{
-  //    setMessage(result);
-  //   });
-  // };
-
   const handleSubmit = async e => {
     var post = getPost();
     console.log(post);
-    var result = await postArticles(getPost());
-    setMessage(result);
+    postArticles(post).then((result)=>{
+      setMessage(result);
+      setOpen(true);
+    });
+  
   };
 
   const getPost = () => {
@@ -121,7 +118,7 @@ export default function SubmitClaim() {
       'claims': claims,
       'doi': doi,
       'abstract': abstract,
-      'supportRating': supportRate
+      'supportRating': supportRate,
     }
   }
 
@@ -137,8 +134,11 @@ export default function SubmitClaim() {
   return (
     <div>
       <CustomDialog title="Submit Result" open={open} onClose={handleClose} >
-        this is a demo result.
-        {message}
+        <Card>
+          <CardHeader color={message.retCode===0?"primary":"danger"}>
+            <h4 className={classes.cardTitleWhite}>{message.retMsg}</h4>
+          </CardHeader>
+        </Card>
       </CustomDialog>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
@@ -187,6 +187,7 @@ export default function SubmitClaim() {
                     labelText="Source database"
                     id="sourcedb"
                     data={LibDB}
+                    value={sourcedb||"ACM"}
                     onChange={handleChange}
                     formControlProps={{
                       fullWidth: true,
@@ -197,6 +198,7 @@ export default function SubmitClaim() {
                   <CustomSelect
                     labelText="Practice"
                     id="practice"
+                    value={practice||""}
                     onChange={handleChange}
                     data={Practices}
                     formControlProps={{
@@ -208,9 +210,9 @@ export default function SubmitClaim() {
                   <CustomSelect
                     labelText="Claims"
                     id="claims"
+                    value={claims===undefined?"":claims.join(",")}
                     onChange={handleChange}
                     data={claimsList}
-                    defaultValue=""
                     formControlProps={{
                       fullWidth: true,
                     }}

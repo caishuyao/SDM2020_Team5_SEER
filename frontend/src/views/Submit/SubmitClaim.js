@@ -119,7 +119,7 @@ export default function SubmitClaim() {
       'yearPublished': yearPublished,
       'sourcedb': sourcedb,
       'practice': practice,
-      'claims': claims,
+      'claim': claims,
       'doi': doi,
       'abstract': abstract,
       'supportRating': supportRate,

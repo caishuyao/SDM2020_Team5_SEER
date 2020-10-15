@@ -62,12 +62,12 @@ const useStyles = makeStyles(styles);
 export default function Search()  {
   const classes = useStyles();
 
-  const [sp, setSP] = useState(5);
+  const [sp, setSP] = useState("");
   const [claims, setClaims] = useState([]);
   const [claimsList, setClaimsList] = useState([]);
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
-  const [list, setList] = useState([]);
+  const [resultList, setResultList] = useState([]);
   //const [post, setPost] = useState({});
   //
 
@@ -119,7 +119,7 @@ export default function Search()  {
     var post = getPost();
     console.log(post);
     var result = await fetchArticles(getPost());
-    setList(result);
+    setResultList(result);
   };
 
   const getPost = ()=>{
@@ -251,7 +251,7 @@ export default function Search()  {
             <Table
               tableHeaderColor="primary"
               tableHead={metaEvidences.head}
-              tableData={list}
+              tableData={resultList}
             />
           </CardBody>
         </Card>

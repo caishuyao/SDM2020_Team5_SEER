@@ -72,10 +72,10 @@ const SupportRate = [
 ];
 
 const sortOption = [
-      {value:"1", name:"Order By Published Year - Latest to Oldest"},
-      {value:"2", name:"Order By Published Year - Oldest to Latest"},
-      {value:"3", name:"Order By Support Rating - High to Low"},
-      {value:"4", name:"Order By Support Rating - Low to High"},
+      {value:"1", name:"Published Year - Latest to Oldest"},
+      {value:"2", name:"Published Year - Oldest to Latest"},
+      {value:"3", name:"Support Rating - High to Low"},
+      {value:"4", name:"Support Rating - Low to High"},
 ]
 
 module.exports = {

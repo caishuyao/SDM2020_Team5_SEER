@@ -56,19 +56,20 @@ export default function CustomTable(props) {
   
   return (
     <div>
-      <CustomDialog title="Submit Result" open={open} onClose={handleClose} >
+      <CustomDialog title="Report Detail" open={open} onClose={handleClose} >
         <Card>
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>This shows the details.</h4>
           </CardHeader>
         </Card>
       </CustomDialog>
-      <GridItem xs={12} sm={12} md={3}>
+      <GridItem xs={12} sm={12} md={4}>
         <SortIcon />
         <CustomSelect
           labelText="Sort by"
           id="orderby"
           data={sortOption}
+          value={orderBy||""}
           onChange={handleSort}
           formControlProps={{
             fullWidth: true,
@@ -94,7 +95,7 @@ export default function CustomTable(props) {
             </TableHead>
           ) : null}
           <TableBody>
-            {tableSorted.map((prop, key) => {
+            {tableData.map((prop, key) => {
               return (
                 <TableRow key={key} className={classes.tableBodyRow} onClick={handleClickOpen} >
                   {prop.map((prop, key) => {

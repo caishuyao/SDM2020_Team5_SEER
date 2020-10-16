@@ -21,7 +21,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run client-install && npm run client-build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn client-install && yarn client-build"
   },
   "author": "SEER Team-5",
   "license": "MIT"

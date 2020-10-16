@@ -13,8 +13,7 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1",
-    "yarn": "^1.22.10"
+    "concurrently": "^4.0.1"
   },
   "license": "MIT"
 }

@@ -5,7 +5,7 @@
     "start": "cd backend && npm start",
     "client": "cd frontend && npm start",
     "server": "cd backend && npm start",
-    "heroku-postbuild": "cd frontend && npm run build",
+    "heroku-postbuild": "cd frontend && npm install && npm run build",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {

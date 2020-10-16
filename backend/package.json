@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "SEER-Server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -21,7 +21,6 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "test": "jest",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },

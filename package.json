@@ -2,8 +2,10 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
+    "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
+    "heroku-postbuild": "cd frontend && yarn && yarn run build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {

@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
+    "create-react-app": "^3.4.1",
     "nodemon": "^2.0.4"
   },
   "scripts": {
@@ -20,7 +21,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":  "NPM_CONFIG_PRODUCTION=false npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build --prefix frontend"
   },
   "author": "SEER Team-5",
   "license": "MIT"

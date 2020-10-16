@@ -15,8 +15,8 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "client-build": "npm run build --prefix client",
+    "client-install": "npm install --prefix frontend",
+    "client-build": "npm run build --prefix frontend",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend",

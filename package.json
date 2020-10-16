@@ -2,11 +2,11 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
-    "start": "cd backend && yarn start",
-    "client": "cd frontend && yarn start",
-    "server": "cd backend && yarn start",
-    "heroku-postbuild": "cd frontend && yarn && yarn run build",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "start": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "server": "cd backend && npm start",
+    "heroku-postbuild": "cd frontend && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "body-parser": "^1.18.3",

@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
-import CustomInput from "components/CustomInput/CustomInput";
 import CustomSelect from "components/CustomSelect/CustomSelect";
-import CustomMulSel from "components/CustomSelect/CustomMulSel";
-import CustomSlider from "components/CustomSlider/CustomSlider";
-import DatePicker from "components/Datepicker/Datepicker";
 import Button from "components/CustomButtons/Button";
 import Table from "components/Table/Table";
 import Card from "components/Card/Card";
@@ -21,10 +17,9 @@ import Chip from '@material-ui/core/Chip';
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 import TextField from '@material-ui/core/TextField';
-import { LibDB, Practices, Claims } from "variables/general";
+import { Practices, Claims } from "variables/general";
 import { metaEvidences } from "variables/charts";
 import { fetchArticles } from "utils/article.util";
-import { validateLocaleAndSetLanguage } from "typescript";
 
 const styles = {
   cardCategoryWhite: {

@@ -46,7 +46,7 @@ const useStyles = makeStyles(styles);
 export default function Browse() {
 
   const classes = useStyles();
-
+  
   const [list,setList] = useState([]);
 
   useEffect(() => {

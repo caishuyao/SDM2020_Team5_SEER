@@ -11,22 +11,16 @@
     "prettier": "^2.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.21.4",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "npm server.js",
-    "client": "cd frontend && npm start",
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
     "server": "nodemon server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild":  "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "SEER Team-5",
   "license": "MIT"

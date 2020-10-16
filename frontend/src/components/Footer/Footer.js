@@ -33,6 +33,7 @@ export default function Footer(props) {
             >
               SEER Team 5
             </a>
+            <br/>
             [Charles, Jason, Sri, Van]
           </span>
         </p>

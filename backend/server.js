@@ -14,6 +14,9 @@ require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//include the static file for client
+app.use(express.static('../frontend/build'));
+
 app.use(routes);
 
 // Bootstrap server

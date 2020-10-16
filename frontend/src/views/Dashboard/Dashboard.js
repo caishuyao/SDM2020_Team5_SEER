@@ -89,7 +89,7 @@ export default function Dashboard() {
             <CardBody>
               <Table
                 tableHeaderColor="warning"
-                tableHead={["ID", "Author", "Title", "Liks"]}
+                tableHead={["ID", "Author", "Title", "Likes"]}
                 tableData={topEvidences.data}
               />
             </CardBody>

@@ -2,16 +2,22 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
+    "test": "(cd backend && jest) &&( cd frontend && jest)",
     "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
     "heroku-postbuild": "cd frontend && yarn && yarn build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-jest": "^26.5.2",
+    "concurrently": "^4.0.1",
+    "jest": "^26.5.3",
+    "react-test-render": "^1.1.2",
+    "react-test-renderer": "^16.14.0"
   },
   "license": "MIT"
 }

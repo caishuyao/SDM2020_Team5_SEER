@@ -1,27 +1,3 @@
-{'title':'','abstract':'','author':'','datePublished':'2020/02/02','practrice':'','claims':'','source':'','dio':'http://dio'}
-{'author': ['Aniche, M F','Testing, MA Gerosa Software']
- 'title': 'Most common mistakes in test-driven development practice: Results from an online survey with developers',
- 'abstract': 'Most common mistakes in test-driven development practice: Results from an online survey with developers',
-'datePublished':'2010'
- 'source':'ieeexplore.ieee.org'
-}
-
-@article{Janzen:2008fx,
-author = {{Janzen, D S} and {Saiedian, H}},
-title = {{Does Test-Driven Development Really Improve Software Design Quality?}},
-journal = {Software, IEEE},
-year = {2008},
-volume = {25},
-number = {2},
-pages = {77--84}
-}
-
-@proceedings{Anonymous:O7UPDeq-,
-title = {{A prototype empirical evaluation of test driven development - Software Metrics, 2004. Proceedings. 10th International Symposium on}},
-year = {2001},
-month = aug
-}
-
 @article{2019arXiv190712290R,
 author = {Romano, Simone and Fucci, Davide and Baldassarre, Maria Teresa and Caivano, Danilo and Scanniello, Giuseppe},
 title = {{An Empirical Assessment on Affective Reactions of Novice Developers when Applying Test-Driven Development}},

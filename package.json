@@ -10,6 +10,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

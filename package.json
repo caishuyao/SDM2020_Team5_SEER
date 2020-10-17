@@ -9,7 +9,9 @@
     "heroku-postbuild": "cd frontend && yarn && yarn build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "dependencies": {},
+  "dependencies": {
+    "jest": "^26.5.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",

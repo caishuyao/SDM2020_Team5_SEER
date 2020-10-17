@@ -94,6 +94,8 @@ export default function SubmitClaim() {
       case "supportRating":
         setSupportRate(value === undefined ? "" : value);
         break;
+      default:
+        break;
     }
   };
 
@@ -119,10 +121,6 @@ export default function SubmitClaim() {
       'abstract': abstract,
       'supportRating': supportRate,
     }
-  }
-
-  function handleClickOpen() {
-    setOpen(true);
   }
 
   const handleClose = value => {

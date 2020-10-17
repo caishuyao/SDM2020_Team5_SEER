@@ -13,6 +13,7 @@ import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/customInputStyle.js";
+import getType from "../../utils/util";
 
 //const useStyles = makeStyles(styles);
 const useStyles = makeStyles((theme) => ({
@@ -99,7 +100,11 @@ export default function CustomMulSel(props) {
           <MenuItem key={index} value={item.value}>
             {item.name}
           </MenuItem>
-        )):null
+        )): (getType(data)==="map"? data.map((key,value,index)=>(
+          <MenuItem key={index} value={key}>
+            {value}
+          </MenuItem>
+        )):null)
         }
    </Select>
       {error ? (

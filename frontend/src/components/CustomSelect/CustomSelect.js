@@ -11,6 +11,7 @@ import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/customInputStyle.js";
+import getType from "../../utils/util";
 
 const useStyles = makeStyles(styles);
 
@@ -34,14 +35,12 @@ export default function CustomSelect(props) {
     [" " + classes.labelRootError]: error,
     [" " + classes.labelRootSuccess]: success && !error
   });
-  const underlineClasses = classNames({
-    [classes.underlineError]: error,
-    [classes.underlineSuccess]: success && !error,
-    [classes.underline]: true,
-  });
+
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined,
   });
+
+  const list =Array.isArray(data) ? data.map((row)=>[row.value,row.name]):(getType(data)==="map"? Array.from(data):[]);
 
   return (
     <FormControl
@@ -68,11 +67,11 @@ export default function CustomSelect(props) {
         onChange={onChange}
         {...inputProps}
       >
-        {data && data.map ? data.map((item, index) => (
-          <MenuItem key={index} value={item.value}>
-            {item.name}
+        { list.map((item, index) => (
+          <MenuItem key={index} value={item[0]}>
+            {item[1]}
           </MenuItem>
-        )):null
+        ))
         }
    </Select>
       {error ? (
@@ -93,7 +92,12 @@ CustomSelect.propTypes = {
   onChange: PropTypes.func,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
-  data: PropTypes.array,
+  data: PropTypes.any,
+  /**
+   * data support two format i
+   * 1: Array:  [{key:'',vaue:''},....]
+   * 2: Map: [[key,value],...]
+   */
   error: PropTypes.bool,
   success: PropTypes.bool,
 };

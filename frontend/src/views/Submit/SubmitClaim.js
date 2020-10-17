@@ -123,11 +123,7 @@ export default function SubmitClaim() {
     }
   }
 
-<<<<<<< HEAD
-  const handleClose = value => {
-=======
   const handleClose = () => {
->>>>>>> f212159405178c0eff8f6eeef068954ac1adaf1b
     setOpen(false);
   };
 

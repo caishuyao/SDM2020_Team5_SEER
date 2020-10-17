@@ -55,7 +55,7 @@ export default function Browse() {
     );
   }, []);
 
-
+  console.log(list);
 
   return (
     <GridContainer>

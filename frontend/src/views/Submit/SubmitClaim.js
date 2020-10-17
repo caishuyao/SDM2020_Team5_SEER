@@ -80,7 +80,7 @@ export default function SubmitClaim() {
         setYearPublished(value);
         break;
       case "sourcedb":
-        setSourcedb(value === undefined ? "ACM" : value);
+        setSourcedb(value === undefined ? "" : value);
         break;
       case "claims":
         setClaims(value === undefined ? [] :[value]);
@@ -93,6 +93,8 @@ export default function SubmitClaim() {
         break;
       case "supportRating":
         setSupportRate(value === undefined ? "" : value);
+        break;
+      default:
         break;
     }
   };
@@ -121,11 +123,7 @@ export default function SubmitClaim() {
     }
   }
 
-  function handleClickOpen() {
-    setOpen(true);
-  }
-
-  const handleClose = value => {
+  const handleClose = () => {
     setOpen(false);
   };
 
@@ -235,7 +233,6 @@ export default function SubmitClaim() {
                     labelText="Support Rating"
                     id="supportRating"
                     onChange={handleChange}
-                    value={supportRate||""}
                     data={SupportRate}
                     value={supportRate||""}
                     formControlProps={{

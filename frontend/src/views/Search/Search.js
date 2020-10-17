@@ -90,13 +90,6 @@ export default function Search() {
       setEndYear(value-0);
     }
   };
-  const validate = (e) => {
-    console.log(e);
-    var value = e.target.value;
-    if (value < minYear) {
-      e.target.value = minYear;
-    }
-  }
 
   const quickYear0 = () =>{
       setBeginYear(curYear);

@@ -27,6 +27,8 @@ export default function CustomTable(props) {
   const [tableSorted, setTableSorted] = useState(tableData);
   const [open, setOpen] = useState(false);
 
+  console.log(tableData);
+
   const handleSort = (e) => {
     const value = e.target.value;
     setOrderBy(value);

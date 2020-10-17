@@ -2,7 +2,7 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
-    "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
+    "test": "(cd backend && yarn && yarn test) &&( cd frontend && yarn && yarn test)",
     "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",

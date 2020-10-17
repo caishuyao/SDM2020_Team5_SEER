@@ -79,7 +79,7 @@ const sortOption = new Map([
 ]);
 
 module.exports = {
-  // these 3 are used to create the tasks lists in TasksCard - Dashboard view
+  // these 5 are used to create the tasks lists in TasksCard - Dashboard view
   LibDB,
   Practices,
   Claims,

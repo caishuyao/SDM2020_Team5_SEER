@@ -123,7 +123,7 @@ export default function SubmitClaim() {
     }
   }
 
-  const handleClose = value => {
+  const handleClose = () => {
     setOpen(false);
   };
 

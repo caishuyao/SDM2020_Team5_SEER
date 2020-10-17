@@ -36,16 +36,16 @@ export default function CustomTable(props) {
     console.log(tableSorted);
     switch (value){
       case '1':
-        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
-      break;
-      case '2':
         setTableSorted(tableData.sort((a, b)=>b[3]-a[3]));
       break;
+      case '2':
+        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
+      break;
       case '3':
-        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
+        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
       break;
       case '4':
-        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
+        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
       break;
       default:
         setTableSorted(tableData);

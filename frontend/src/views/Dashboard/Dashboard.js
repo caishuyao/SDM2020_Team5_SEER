@@ -100,3 +100,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+// This file has the dashboard function which consists of the Author ID Title and Likes and  for each updated file corresponding dataset retrieved from the top.evidencesdata

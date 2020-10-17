@@ -24,24 +24,28 @@ export default function CustomTable(props) {
   const classes = useStyles();
   const { tableHead, tableData, tableHeaderColor } = props;
   const [orderBy, setOrderBy] = useState();
-  const [tableSorted, setTableSorted] = useState(tableData);
+  const [tableSorted, setTableSorted] = useState([]);
   const [open, setOpen] = useState(false);
 
   const handleSort = (e) => {
     const value = e.target.value;
     setOrderBy(value);
+    console.log(tableSorted);
     switch (value){
       case '1':
-        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
       break;
       case '2':
-        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+        setTableSorted(tableData.sort((a, b)=>b[3]-a[3]));
       break;
       case '3':
-        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
       break;
       case '4':
-        setTableSorted(tableData.sort((a, b)=>{return a.yearPublished - b.yearPublished})); 
+        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
+      break;
+      default:
+        setTableSorted(tableData);
       break;
     }
   };
@@ -53,7 +57,11 @@ export default function CustomTable(props) {
   const handleClose = value => {
     setOpen(false);
   };
-  
+
+  React.useEffect(()=>{
+    setTableSorted(tableData);
+  },[tableData]);
+
   return (
     <div>
       <CustomDialog title="Report Detail" open={open} onClose={handleClose} >
@@ -95,7 +103,7 @@ export default function CustomTable(props) {
             </TableHead>
           ) : null}
           <TableBody>
-            {tableData.map((prop, key) => {
+            {tableSorted.map((prop, key) => {
               return (
                 <TableRow key={key} className={classes.tableBodyRow} onClick={handleClickOpen} >
                   {prop.map((prop, key) => {

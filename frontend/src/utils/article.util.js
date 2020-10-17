@@ -1,3 +1,4 @@
+import { Practices, Claims, SupportRate, sortOption } from "variables/general";
 
 const  articles2array = async (articles,idx) =>{
         if(idx === undefined ){
@@ -5,9 +6,24 @@ const  articles2array = async (articles,idx) =>{
         }
         var data = await articles.json();
         console.log(data);
-
-  return  data.map((row,index)=> [""+(idx+index),row['author'],row['title'],""+row['yearPublished'],row['doi'],row['abstract'],row['claims'].join(","),row['supportRating']]);
+        var convertedData =  data.map((row,index)=> convert(idx,row,index));
+        console.log(convertedData);
+        return convertedData;
  };
+
+const convert = (idx,row,index) =>{
+  var record=[];
+  record.push(""+(idx+index));
+  record.push(row['author']);
+  record.push(row['title']);
+  record.push(""+row['yearPublished']);
+  record.push("http://doi.org/"+row['doi']);
+  record.push(row['abstract']);
+  record.push(Practices.get(row['practice']));
+//  record.push(row['claims'].map((r)=> Claims[row['practice']].get(r)).join(","));
+  record.push(SupportRate[row['supportRating']]);
+  return record;
+};
 
 //
 const postArticles = async (post)=> {

@@ -2,7 +2,7 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
-    "test": "(cd backend && jest) &&( cd frontend && jest)",
+    "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
     "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
@@ -13,11 +13,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
-    "babel-jest": "^26.5.2",
-    "concurrently": "^4.0.1",
-    "jest": "^26.5.3",
-    "react-test-render": "^1.1.2",
-    "react-test-renderer": "^16.14.0"
+    "concurrently": "^4.0.1"
   },
   "license": "MIT"
 }

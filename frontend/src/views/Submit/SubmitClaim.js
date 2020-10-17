@@ -237,6 +237,7 @@ export default function SubmitClaim() {
                     onChange={handleChange}
                     value={supportRate||""}
                     data={SupportRate}
+                    value={supportRate||""}
                     formControlProps={{
                       fullWidth: true,
                     }}

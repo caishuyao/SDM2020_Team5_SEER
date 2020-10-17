@@ -10,6 +10,10 @@ import TableCell from "@material-ui/core/TableCell";
 import SortIcon from '@material-ui/icons/Sort';
 import GridItem from "components/Grid/GridItem.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
+import CustomDialog from "components/CustomDialog/CustomDialog";
+import Card from "components/Card/Card.js";
+import CardHeader from "components/Card/CardHeader.js";
+//common variables
 import { sortOption } from "variables/general";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
@@ -21,6 +25,7 @@ export default function CustomTable(props) {
   const { tableHead, tableData, tableHeaderColor } = props;
   const [orderBy, setOrderBy] = useState();
   const [tableSorted, setTableSorted] = useState(tableData);
+  const [open, setOpen] = useState(false);
 
   console.log(tableData,tableSorted);
 
@@ -43,15 +48,30 @@ export default function CustomTable(props) {
     }
   };
 
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  const handleClose = value => {
+    setOpen(false);
+  };
   
   return (
     <div>
-      <GridItem xs={12} sm={12} md={3}>
+      <CustomDialog title="Report Detail" open={open} onClose={handleClose} >
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>This shows the details.</h4>
+          </CardHeader>
+        </Card>
+      </CustomDialog>
+      <GridItem xs={12} sm={12} md={4}>
         <SortIcon />
         <CustomSelect
           labelText="Sort by"
           id="orderby"
           data={sortOption}
+          value={orderBy||""}
           onChange={handleSort}
           formControlProps={{
             fullWidth: true,
@@ -79,7 +99,7 @@ export default function CustomTable(props) {
           <TableBody>
             {tableData.map((prop, key) => {
               return (
-                <TableRow key={key} className={classes.tableBodyRow}>
+                <TableRow key={key} className={classes.tableBodyRow} onClick={handleClickOpen} >
                   {prop.map((prop, key) => {
                     return (
                       <TableCell className={classes.tableCell} key={key}>

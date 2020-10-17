@@ -64,8 +64,6 @@ export default function Search() {
   const [beginYear, setBeginYear] = useState(curYear-4);
   const [endYear, setEndYear] = useState(curYear);
   const [resultList, setResultList] = useState([]);
-  //const [post, setPost] = useState({});
-  //
 
   const handleRangeChange = (event, newValue) => {
     setBeginYear(newValue[0]);

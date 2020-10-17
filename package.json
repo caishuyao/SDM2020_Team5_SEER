@@ -6,11 +6,10 @@
     "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
-    "heroku-postbuild": "cd frontend && yarn && yarn build",
+    "heroku-postbuild": "(cd backend && yarn ) && (cd frontend && yarn && yarn build)",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
-    "express": "^4.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

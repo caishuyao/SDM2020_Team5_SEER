@@ -80,7 +80,7 @@ export default function SubmitClaim() {
         setYearPublished(value);
         break;
       case "sourcedb":
-        setSourcedb(value === undefined ? "" : value);
+        setSourcedb(value === undefined ? "ACM" : value);
         break;
       case "claims":
         setClaims(value === undefined ? [] :[value]);
@@ -235,6 +235,7 @@ export default function SubmitClaim() {
                     labelText="Support Rating"
                     id="supportRating"
                     onChange={handleChange}
+                    value={supportRate||""}
                     data={SupportRate}
                     formControlProps={{
                       fullWidth: true,

@@ -22,6 +22,8 @@ export default function CustomTable(props) {
   const [orderBy, setOrderBy] = useState();
   const [tableSorted, setTableSorted] = useState(tableData);
 
+  console.log(tableData,tableSorted);
+
   const handleSort = (e) => {
     const value = e.target.value;
     setOrderBy(value);
@@ -75,7 +77,7 @@ export default function CustomTable(props) {
             </TableHead>
           ) : null}
           <TableBody>
-            {tableSorted.map((prop, key) => {
+            {tableData.map((prop, key) => {
               return (
                 <TableRow key={key} className={classes.tableBodyRow}>
                   {prop.map((prop, key) => {

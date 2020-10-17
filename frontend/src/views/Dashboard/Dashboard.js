@@ -23,7 +23,7 @@ import {
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
 const useStyles = makeStyles(styles);
-
+// Dashboard Function called //
 export default function Dashboard() {
   const classes = useStyles();
   return (
@@ -39,6 +39,7 @@ export default function Dashboard() {
                 options={dailySalesChart.options}
                 listener={dailySalesChart.animation}
               />
+              
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>Monthly Submitation</h4>

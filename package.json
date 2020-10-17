@@ -1,80 +1,22 @@
 {
   "name": "SEER",
-  "version": "1.9.0",
-  "description": "SEER - TEAM 5",
-  "private": false,
-  "main": "dist/index.js",
-  "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@progress/kendo-drawing": "^1.9.2",
-    "@progress/kendo-react-animation": "^3.17.0",
-    "@progress/kendo-react-buttons": "^3.17.0",
-    "@progress/kendo-react-common": "^3.17.0",
-    "@progress/kendo-react-dateinputs": "^3.17.0",
-    "@progress/kendo-react-dropdowns": "^3.17.0",
-    "@progress/kendo-react-form": "^3.17.0",
-    "@progress/kendo-react-inputs": "^3.17.0",
-    "@progress/kendo-react-intl": "^3.17.0",
-    "@progress/kendo-react-labels": "^3.17.0",
-    "@progress/kendo-react-upload": "^3.17.0",
-    "@progress/kendo-theme-material": "^3.19.2",
-    "@testing-library/dom": "^7.24.3",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.20.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.7",
-    "npm": "^6.14.8",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
-  },
+  "version": "1.0.0",
   "scripts": {
-    "lint": "eslint src/**/*.js",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "lint:check": "eslint . --ext=js,jsx;  exit 0",
-    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
-    "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
-    "build-package": "npm run build-package-css && babel src --out-dir dist"
+    "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
+    "start": "cd backend && yarn start",
+    "client": "cd frontend && yarn start",
+    "server": "cd backend && yarn start",
+    "heroku-postbuild": "(cd backend && yarn ) && (cd frontend && yarn && yarn build)",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caishuyao/SDM2020_Team5_SEER.git"
-  },
-  "keywords": [],
-  "author": "SEER TEAM 5",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/caishuyao/SDM2020_Team5_SEER/issues"
-  },
-  "optionalDependencies": {
-    "@types/googlemaps": "3.39.6",
-    "@types/markerclustererplus": "2.1.33",
-    "ajv": "6.12.2",
-    "typescript": "3.9.3"
+  "dependencies": {
+    "jest": "^26.5.3"
   },
   "devDependencies": {
-    "eslint-config-prettier": "6.11.0",
-    "eslint-plugin-prettier": "3.1.3",
-    "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.8",
-    "prettier": "2.0.5"
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "concurrently": "^4.0.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": []
-  }
+  "license": "MIT"
 }

@@ -75,10 +75,10 @@ export default function CustomTable(props) {
           <CardDetail cardDetail={cardDetail} />
         </Card>
       </CustomDialog>
-      <GridContainer>
-      <GridItem xs={12} sm={12} md={4}>
+      <GridContainer  spacing={1} alignItems="flex-end">
+      <GridItem xs={1} sm={1} md={1}>
           <SortIcon /></GridItem>
-          <GridItem xs={12} sm={12} md={4}>
+          <GridItem xs={3} sm={3} md={3}>
         <CustomSelect
           labelText="Sort by"
           id="orderby"

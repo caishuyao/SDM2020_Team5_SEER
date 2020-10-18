@@ -2,21 +2,23 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
+    "install": "(cd backend && yarn) &&( cd frontend && yarn)",
     "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
+    "lint:check": "(cd backend && yarn lint:check) &&( cd frontend && yarn lint:check)",
+    "lint:fix": "(cd backend && yarn lint:fix) &&( cd frontend && yarn lint:fix)",
     "start": "cd backend && yarn start",
     "client": "cd frontend && yarn start",
     "server": "cd backend && yarn start",
     "heroku-postbuild": "(cd backend && yarn ) && (cd frontend && yarn && yarn build)",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
-  "dependencies": {
-    "jest": "^26.5.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "eslint-config-airbnb": "^18.2.0"
   },
   "license": "MIT"
 }

@@ -39,7 +39,6 @@ export default function Dashboard() {
                 options={dailySalesChart.options}
                 listener={dailySalesChart.animation}
               />
-              
             </CardHeader>
             <CardBody>
               <h4 className={classes.cardTitle}>Monthly Submitation</h4>

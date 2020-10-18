@@ -7,22 +7,30 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import SortIcon from '@material-ui/icons/Sort';
-import GridItem from "components/Grid/GridItem.js";
-import CustomSelect from "components/CustomSelect/CustomSelect.js";
+import SortIcon from "@material-ui/icons/Sort";
+import GridItem from "components/Grid/GridItem";
+import GridContainer from "components/Grid/GridContainer";
+import CustomSelect from "components/CustomSelect/CustomSelect";
 import CustomDialog from "components/CustomDialog/CustomDialog";
+<<<<<<< HEAD
 import Card from "components/Card/Card.js";
 import CardDetail from "components/Card/CardDetail";
 import GridContainer from "components/Grid/GridContainer";
 //common variables
+=======
+import Card from "components/Card/Card";
+import CardDetail from "components/Card/CardDetail";
+// common variables
+>>>>>>> sort-option-beauty
 import { sortOption } from "variables/general";
 // core components
-import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
-
+import styles from "assets/jss/material-dashboard-react/components/tableStyle";
 
 const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
+  const col_year = 3;
+  const col_sr_number = 8;
   const classes = useStyles();
   const { tableHead, tableData, tableHeaderColor } = props;
   const [orderBy, setOrderBy] = useState();
@@ -31,25 +39,29 @@ export default function CustomTable(props) {
   const [cardDetail, setCardDetail] = useState();
 
   const handleSort = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setOrderBy(value);
     console.log(tableSorted);
-    switch (value){
-      case '1':
-        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
-      break;
-      case '2':
-        setTableSorted(tableData.sort((a, b)=>b[3]-a[3]));
-      break;
-      case '3':
-        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
-      break;
-      case '4':
-        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
-      break;
+    switch (value) {
+      case "1":
+        setTableSorted(tableData.sort((a, b) => b[col_year] - a[col_year]));
+        break;
+      case "2":
+        setTableSorted(tableData.sort((a, b) => a[col_year] - b[col_year]));
+        break;
+      case "3":
+        setTableSorted(
+          tableData.sort((a, b) => b[col_sr_number] - a[col_sr_number])
+        );
+        break;
+      case "4":
+        setTableSorted(
+          tableData.sort((a, b) => a[col_sr_number] - b[col_sr_number])
+        );
+        break;
       default:
         setTableSorted(tableData);
-      break;
+        break;
     }
   };
 
@@ -58,70 +70,70 @@ export default function CustomTable(props) {
     setCardDetail(prop);
   };
 
-  const handleClose = value => {
+  const handleClose = () => {
     setOpen(false);
   };
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setTableSorted(tableData);
-  },[tableData]);
+  }, [tableData]);
 
   return (
     <div>
-      <CustomDialog title="Report Detail" open={open} onClose={handleClose} >
+      <CustomDialog title="Report Detail" open={open} onClose={handleClose}>
         <Card>
           <CardDetail cardDetail={cardDetail} />
         </Card>
       </CustomDialog>
-      <GridContainer>
-      <GridItem xs={1}>
-      <SortIcon />
-      </GridItem>
-      <GridItem xs={6} sm={4}>
-        <CustomSelect
-          labelText="Sort by"
-          id="orderby"
-          data={sortOption}
-          value={orderBy||""}
-          onChange={handleSort}
-          formControlProps={{
-            fullWidth: true,
-          }}
-        />
-      </GridItem>
+      <GridContainer spacing={1} alignItems="flex-end">
+        <GridItem>
+          <SortIcon />
+        </GridItem>
+        <GridItem xs={4} sm={4} md={4}>
+          <CustomSelect
+            labelText="Sort by"
+            id="orderby"
+            data={sortOption}
+            value={orderBy || ""}
+            onChange={handleSort}
+            formControlProps={{
+              fullWidth: true,
+            }}
+          />
+        </GridItem>
       </GridContainer>
       <div className={classes.tableResponsive}>
         <Table className={classes.table}>
           {tableHead !== undefined ? (
-            <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
+            <TableHead className={classes[`${tableHeaderColor}TableHeader`]}>
               <TableRow className={classes.tableHeadRow}>
-                {tableHead.map((prop, key) => {
-                  return (
-                    <TableCell
-                      className={classes.tableCell + " " + classes.tableHeadCell}
-                      key={key}
-                    >
-                      {prop}
-                    </TableCell>
-                  );
-                })}
+                {tableHead.map((prop, key) => (
+                  <TableCell
+                    className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                    key={key}
+                  >
+                    {prop}
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
           ) : null}
           <TableBody>
-            {tableSorted.map((prop, key) => {
-              return (
-                <TableRow key={key} className={classes.tableBodyRow} onClick={()=>handleClickOpen(prop)} >
-                  {prop.map((prop, key) => {
-                    return (
-                      <TableCell className={classes.tableCell} key={key}>
-                        {prop}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            {tableSorted.map((row, key) => (
+              <TableRow
+                key={key}
+                className={classes.tableBodyRow}
+                onClick={() => handleClickOpen(row)}
+              >
+                {row.map((col, index) =>
+                  index < tableHead.length ? (
+                    <TableCell className={classes.tableCell} key={index}>
+                      {col}
+                    </TableCell>
+                  ) : null
+                )}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

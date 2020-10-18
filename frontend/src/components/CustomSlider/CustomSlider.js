@@ -24,19 +24,13 @@ export default function CustomSlider(props) {
     onChange,
     labelProps,
     inputProps,
-    data,
     error,
     success,
   } = props;
 
   const labelClasses = classNames({
-    [" " + classes.labelRootError]: error,
-    [" " + classes.labelRootSuccess]: success && !error
-  });
-  const underlineClasses = classNames({
-    [classes.underlineError]: error,
-    [classes.underlineSuccess]: success && !error,
-    [classes.underline]: true,
+    [` ${classes.labelRootError}`]: error,
+    [` ${classes.labelRootSuccess}`]: success && !error,
   });
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined,
@@ -44,7 +38,7 @@ export default function CustomSlider(props) {
   return (
     <FormControl
       {...formControlProps}
-      className={formControlProps.className + " " + classes.formControl}
+      className={`${formControlProps.className} ${classes.formControl}`}
     >
       {labelText !== undefined ? (
         <InputLabel
@@ -61,14 +55,14 @@ export default function CustomSlider(props) {
           disabled: classes.disabled,
         }}
         id={id}
-        name={name? name:id}
+        name={name || id}
         onChange={onChange}
         {...inputProps}
-     />
+      />
       {error ? (
-        <Clear className={classes.feedback + " " + classes.labelRootError} />
+        <Clear className={`${classes.feedback} ${classes.labelRootError}`} />
       ) : success ? (
-        <Check className={classes.feedback + " " + classes.labelRootSuccess} />
+        <Check className={`${classes.feedback} ${classes.labelRootSuccess}`} />
       ) : null}
     </FormControl>
   );

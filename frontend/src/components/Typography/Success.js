@@ -11,12 +11,12 @@ export default function Success(props) {
   const classes = useStyles();
   const { children } = props;
   return (
-    <div className={classes.defaultFontStyle + " " + classes.successText}>
+    <div className={`${classes.defaultFontStyle} ${classes.successText}`}>
       {children}
     </div>
   );
 }
 
 Success.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

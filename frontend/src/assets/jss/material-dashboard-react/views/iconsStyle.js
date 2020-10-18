@@ -2,7 +2,7 @@ import {
   boxShadow,
   whiteColor,
   grayColor,
-  hexToRgb
+  hexToRgb,
 } from "assets/jss/material-dashboard-react.js";
 
 const iconsStyle = {
@@ -10,22 +10,22 @@ const iconsStyle = {
     width: "100%",
     height: "500px",
     border: "0",
-    ...boxShadow
+    ...boxShadow,
   },
   iframeContainer: {
-    margin: "0 -20px 0"
+    margin: "0 -20px 0",
   },
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
-      color: "rgba(" + hexToRgb(whiteColor) + ",.62)",
+      color: `rgba(${hexToRgb(whiteColor)},.62)`,
       margin: "0",
       fontSize: "14px",
       marginTop: "0",
-      marginBottom: "0"
+      marginBottom: "0",
     },
     "& a,& a:hover,& a:focus": {
-      color: whiteColor
-    }
+      color: whiteColor,
+    },
   },
   cardTitleWhite: {
     color: whiteColor,
@@ -38,9 +38,9 @@ const iconsStyle = {
     "& small": {
       color: grayColor[1],
       fontWeight: "400",
-      lineHeight: "1"
-    }
-  }
+      lineHeight: "1",
+    },
+  },
 };
 
 export default iconsStyle;

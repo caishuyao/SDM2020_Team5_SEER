@@ -9,7 +9,18 @@ import PropTypes from "prop-types";
 
 export default function CardDetail(props) {
   const data = props.cardDetail;
-  const index = {no:0,author:1,title:2,year:3,doi:4,practice:5,claims:6,sr_text:7,sr_number:8,abstract:9};
+  const index = {
+    no: 0,
+    author: 1,
+    title: 2,
+    year: 3,
+    doi: 4,
+    practice: 5,
+    claims: 6,
+    sr_text: 7,
+    sr_number: 8,
+    abstract: 9,
+  };
   return (
     <CardBody>
       <Typography variant="h5" component="h2" gutterBottom>

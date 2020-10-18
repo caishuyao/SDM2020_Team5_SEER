@@ -67,7 +67,7 @@ const Claims = {
 const SupportRate = new Map([
       ["1", "Low"],
       ["2", "Medium"],
-      ["3", "High"]
+      ["3", "High   "]
 ]);
 
 const sortOption = new Map([

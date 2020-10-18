@@ -8,12 +8,11 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import SortIcon from '@material-ui/icons/Sort';
-import GridItem  from "components/Grid/GridItem.js";
+import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
 import CustomDialog from "components/CustomDialog/CustomDialog";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardDetail from "components/Card/CardDetail";
 
 //common variables
@@ -36,22 +35,22 @@ export default function CustomTable(props) {
     const value = e.target.value;
     setOrderBy(value);
     console.log(tableSorted);
-    switch (value){
+    switch (value) {
       case '1':
-        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
-      break;
+        setTableSorted(tableData.sort((a, b) => b[3] - a[3]));
+        break;
       case '2':
-        setTableSorted(tableData.sort((a, b)=>b[3]-a[3]));
-      break;
+        setTableSorted(tableData.sort((a, b) => a[3] - b[3]));
+        break;
       case '3':
-        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
-      break;
+        setTableSorted(tableData.sort((a, b) => b[7].length - a[7].length));
+        break;
       case '4':
-        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
-      break;
+        setTableSorted(tableData.sort((a, b) => a[7].length - b[7].length));
+        break;
       default:
         setTableSorted(tableData);
-      break;
+        break;
     }
   };
 
@@ -64,9 +63,9 @@ export default function CustomTable(props) {
     setOpen(false);
   };
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setTableSorted(tableData);
-  },[tableData]);
+  }, [tableData]);
 
   return (
     <div>
@@ -75,22 +74,22 @@ export default function CustomTable(props) {
           <CardDetail cardDetail={cardDetail} />
         </Card>
       </CustomDialog>
-      <GridContainer  spacing={1} alignItems="flex-end">
-      <GridItem xs={1} sm={1} md={1}>
+      <GridContainer spacing={0} alignItems="flex-end">
+        <GridItem xs={1} sm={1} md={1}>
           <SortIcon /></GridItem>
-          <GridItem xs={3} sm={3} md={3}>
-        <CustomSelect
-          labelText="Sort by"
-          id="orderby"
-          data={sortOption}
-          value={orderBy||""}
-          onChange={handleSort}
-          formControlProps={{
-            fullWidth: true,
-          }}
-        />
+        <GridItem xs={9} sm={6} md={3}>
+          <CustomSelect
+            labelText="Sort by"
+            id="orderby"
+            data={sortOption}
+            value={orderBy || ""}
+            onChange={handleSort}
+            formControlProps={{
+              fullWidth: true,
+            }}
+          />
         </GridItem>
-        </GridContainer>
+      </GridContainer>
       <div className={classes.tableResponsive}>
         <Table className={classes.table}>
           {tableHead !== undefined ? (
@@ -112,13 +111,12 @@ export default function CustomTable(props) {
           <TableBody>
             {tableSorted.map((prop, key) => {
               return (
-                <TableRow key={key} className={classes.tableBodyRow} onClick={()=>handleClickOpen(prop)} >
+                <TableRow key={key} className={classes.tableBodyRow} onClick={() => handleClickOpen(prop)} >
                   {prop.map((prop, key) => {
-                    return (
+                    return prop.length < 300 ?
                       <TableCell className={classes.tableCell} key={key}>
                         {prop}
-                      </TableCell>
-                    );
+                      </TableCell> : '';
                   })}
                 </TableRow>
               );

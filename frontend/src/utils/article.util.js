@@ -18,10 +18,10 @@ const convert = (idx,row,index) =>{
   record.push(row['title']);
   record.push(""+row['yearPublished']);
   record.push(row['doi']);
-  record.push(row['abstract']);
   record.push(Practices.get(row['practice']));
-//  record.push(row['claims'].map((r)=> Claims[row['practice']].get(r)).join(","));
+  record.push(row['claims'].map((r)=> Claims[row['practice']].get(r)).join(","));
   record.push(SupportRate.get(row['supportRating']));
+  record.push(row['abstract']);
   return record;
 };
 

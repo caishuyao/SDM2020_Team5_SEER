@@ -12,16 +12,9 @@ import GridItem from "components/Grid/GridItem";
 import GridContainer from "components/Grid/GridContainer";
 import CustomSelect from "components/CustomSelect/CustomSelect";
 import CustomDialog from "components/CustomDialog/CustomDialog";
-<<<<<<< HEAD
-import Card from "components/Card/Card.js";
-import CardDetail from "components/Card/CardDetail";
-import GridContainer from "components/Grid/GridContainer";
-//common variables
-=======
 import Card from "components/Card/Card";
 import CardDetail from "components/Card/CardDetail";
 // common variables
->>>>>>> sort-option-beauty
 import { sortOption } from "variables/general";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tableStyle";

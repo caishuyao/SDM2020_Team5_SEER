@@ -9,39 +9,44 @@ import PropTypes from "prop-types";
 
 export default function CardDetail(props) {
   const data = props.cardDetail;
+  const index = {no:0,author:1,title:2,year:3,doi:4,practice:5,claims:6,sr_text:7,sr_number:8,abstract:9};
   return (
     <CardBody>
       <Typography variant="h5" component="h2" gutterBottom>
-        {data[2]}
+        {data[index.title]}
       </Typography>
       <Chip
         avatar={<Avatar>SE</Avatar>}
-        label={data[6]}
+        label={data[index.practice]}
         color="primary"
         id="practice"
         name="practice"
       />
       <Typography variant="h6" component="h2" gutterBottom>
         Support Rating:
-        {data[7]}
+        {data[index.sr_text]}
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
         Author:
-        {data[1]}
+        {data[index.author]}
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
         Published Year:
-        {data[3]}
+        {data[index.year]}
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
         DOI:{" "}
-        <a href={`https://doi.org/${data[4]}`} rel="noreferrer" target="_blank">
-          {data[4]}
+        <a
+          href={`https://doi.org/${data[index.doi]}`}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {data[index.doi]}
         </a>
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
         Abstract:
-        {data[5]}
+        {data[index.abstract]}
       </Typography>
     </CardBody>
   );

@@ -91,7 +91,7 @@ CustomSelect.propTypes = {
   labelProps: PropTypes.object,
   id: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.any,
   onChange: PropTypes.func,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,

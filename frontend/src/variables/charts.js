@@ -152,8 +152,8 @@ const metaEvidences = {
     "Title",
     "Published Year",
     "DOI",
-    "Abstract",
     "Practice",
+    "Claims",
     "Support Rating",
   ],
   data: [

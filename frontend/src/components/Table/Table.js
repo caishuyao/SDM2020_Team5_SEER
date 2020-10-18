@@ -8,12 +8,14 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import SortIcon from '@material-ui/icons/Sort';
-import GridItem from "components/Grid/GridItem.js";
+import GridItem  from "components/Grid/GridItem.js";
+import GridContainer from "components/Grid/GridContainer.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
 import CustomDialog from "components/CustomDialog/CustomDialog";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardDetail from "components/Card/CardDetail";
+
 //common variables
 import { sortOption } from "variables/general";
 // core components
@@ -73,8 +75,10 @@ export default function CustomTable(props) {
           <CardDetail cardDetail={cardDetail} />
         </Card>
       </CustomDialog>
+      <GridContainer>
       <GridItem xs={12} sm={12} md={4}>
-        <SortIcon />
+          <SortIcon /></GridItem>
+          <GridItem xs={12} sm={12} md={4}>
         <CustomSelect
           labelText="Sort by"
           id="orderby"
@@ -85,7 +89,8 @@ export default function CustomTable(props) {
             fullWidth: true,
           }}
         />
-      </GridItem>
+        </GridItem>
+        </GridContainer>
       <div className={classes.tableResponsive}>
         <Table className={classes.table}>
           {tableHead !== undefined ? (

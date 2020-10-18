@@ -3,6 +3,7 @@ os: linux
 node_js:
 - stable
 scripts:
+  - yarn install
 - yarn lint:check
 - yarn test
 deploy:

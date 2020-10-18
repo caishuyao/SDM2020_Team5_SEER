@@ -2,7 +2,8 @@
   "name": "SEER",
   "version": "1.0.0",
   "scripts": {
-    "test": "(cd backend && yarn && yarn test) &&( cd frontend && yarn && yarn test)",
+    "install": "(cd backend && yarn) &&( cd frontend && yarn)",
+    "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
     "lint:check": "(cd backend && yarn lint:check) &&( cd frontend && yarn lint:check)",
     "lint:fix": "(cd backend && yarn lint:fix) &&( cd frontend && yarn lint:fix)",
     "start": "cd backend && yarn start",

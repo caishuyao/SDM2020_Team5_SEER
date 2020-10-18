@@ -60,7 +60,8 @@ export default function CardDetail(props) {
         </a>
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
-        Abstract:<br/>
+        Abstract:
+        <br />
         {data[index.abstract]}
       </Typography>
     </CardBody>

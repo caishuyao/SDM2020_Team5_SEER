@@ -34,6 +34,10 @@ export default function CardDetail(props) {
         name="practice"
       />
       <Typography variant="h6" component="h2" gutterBottom>
+        Claims:
+        {data[index.claims]}
+      </Typography>
+      <Typography variant="h6" component="h2" gutterBottom>
         Support Rating:
         {data[index.sr_text]}
       </Typography>
@@ -56,7 +60,7 @@ export default function CardDetail(props) {
         </a>
       </Typography>
       <Typography variant="h6" component="h2" gutterBottom>
-        Abstract:
+        Abstract:<br/>
         {data[index.abstract]}
       </Typography>
     </CardBody>

@@ -82,7 +82,7 @@ export default function CustomTable(props) {
         <GridItem>
           <SortIcon />
         </GridItem>
-        <GridItem xs={4} sm={4} md={4}>
+        <GridItem xs={9} sm={4} md={4}>
           <CustomSelect
             labelText="Sort by"
             id="orderby"

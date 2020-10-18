@@ -52,9 +52,7 @@ export default function Admin({ ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const getRoute = () => {
-    return window.location.pathname !== "/admin/maps";
-  };
+  const getRoute = () => window.location.pathname !== "/admin/maps";
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false);
@@ -82,7 +80,7 @@ export default function Admin({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"seer-team-5"}
+        logoText="seer-team-5"
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}

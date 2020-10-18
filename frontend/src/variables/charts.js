@@ -1,15 +1,15 @@
 // ##############################
 // // // javascript library for creating charts
 // #############################
-var Chartist = require("chartist");
+const Chartist = require("chartist");
 
 // ##############################
 // // // variables used to create animation on charts
 // #############################
-var delays = 80,
-  durations = 500;
-var delays2 = 80,
-  durations2 = 500;
+const delays = 80;
+const durations = 500;
+const delays2 = 80;
+const durations2 = 500;
 
 // ##############################
 // // // Daily Sales
@@ -106,7 +106,7 @@ const emailsSubscriptionChart = {
       {
         seriesBarDistance: 5,
         axisX: {
-          labelInterpolationFnc: function (value) {
+          labelInterpolationFnc(value) {
             return value[0];
           },
         },
@@ -114,7 +114,7 @@ const emailsSubscriptionChart = {
     ],
   ],
   animation: {
-    draw: function (data) {
+    draw(data) {
       if (data.type === "bar") {
         data.element.animate({
           opacity: {
@@ -146,7 +146,16 @@ const topEvidences = {
 };
 
 const metaEvidences = {
-  head: ["NO.", "Author", "Title", "Published Year", "DOI", "Practice", "Claims", "Support Rating"],
+  head: [
+    "NO.",
+    "Author",
+    "Title",
+    "Published Year",
+    "DOI",
+    "Practice",
+    "Claims",
+    "Support Rating",
+  ],
   data: [
     ["1", "Dakota Rice", "Applying TDD in agile development ", "1203"],
     ["2", "Dakota Rice", "Applying TDD in agile development ", "500"],

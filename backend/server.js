@@ -1,6 +1,6 @@
-
 // server.js
 const express = require('express');
+
 const app = express();
 
 const routes = require('./routes');
@@ -14,12 +14,12 @@ require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//include the static file for client
+// include the static file for client
 app.use(express.static('../frontend/build'));
 
 app.use(routes);
 
 // Bootstrap server
 app.listen(PORT, () => {
-	console.log(`Server listening on port ${PORT}.`);
+  console.log(`Server listening on port ${PORT}.`);
 });

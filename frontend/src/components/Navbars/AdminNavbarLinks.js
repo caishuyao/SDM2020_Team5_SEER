@@ -100,11 +100,9 @@ export default function AdminNavbarLinks() {
           anchorEl={openNotification}
           transition
           disablePortal
-          className={
-            classNames({ [classes.popperClose]: !openNotification }) +
-            " " +
-            classes.popperNav
-          }
+          className={`${classNames({
+            [classes.popperClose]: !openNotification,
+          })} ${classes.popperNav}`}
         >
           {({ TransitionProps, placement }) => (
             <Grow
@@ -112,7 +110,7 @@ export default function AdminNavbarLinks() {
               id="notification-menu-list-grow"
               style={{
                 transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom"
+                  placement === "bottom" ? "center top" : "center bottom",
               }}
             >
               <Paper>
@@ -169,11 +167,9 @@ export default function AdminNavbarLinks() {
           anchorEl={openProfile}
           transition
           disablePortal
-          className={
-            classNames({ [classes.popperClose]: !openProfile }) +
-            " " +
+          className={`${classNames({ [classes.popperClose]: !openProfile })} ${
             classes.popperNav
-          }
+          }`}
         >
           {({ TransitionProps, placement }) => (
             <Grow
@@ -181,7 +177,7 @@ export default function AdminNavbarLinks() {
               id="profile-menu-list-grow"
               style={{
                 transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom"
+                  placement === "bottom" ? "center top" : "center bottom",
               }}
             >
               <Paper>

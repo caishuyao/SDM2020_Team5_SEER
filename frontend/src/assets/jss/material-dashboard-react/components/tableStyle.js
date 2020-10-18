@@ -71,7 +71,7 @@ const tableStyle = theme => ({
     display: "table-row",
     outline: "none",
     verticalAlign: "middle"
-  }
+  },
 });
 
 export default tableStyle;

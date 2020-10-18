@@ -22,9 +22,10 @@ export default function CardDetail(props) {
             <Typography variant="h6" component="h2" gutterBottom>Author: {data[1]}</Typography>
             <Typography variant="h6" component="h2" gutterBottom>Published Year: {data[3]}</Typography>
             <Typography variant="h6" component="h2" gutterBottom>
-                DOI: <a href={"https://doi.org/" + data[4]} target="_blank" >{data[4]}</a>
+                DOI: <a href={"https://doi.org/" + data[4]} target="_blank" rel="noopener noreferrer">{data[4]}</a>
             </Typography>
-            <Typography variant="h6" component="h2" gutterBottom>Abstract: {data[5]}</Typography>
+            <Typography variant="h6" component="h2" gutterBottom>Abstract:<br/>
+            {data[5]}</Typography>
         </CardBody>
     )
 };

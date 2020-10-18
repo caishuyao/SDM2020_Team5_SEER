@@ -12,8 +12,8 @@ import GridItem from "components/Grid/GridItem.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
 import CustomDialog from "components/CustomDialog/CustomDialog";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardDetail from "components/Card/CardDetail";
+import GridContainer from "components/Grid/GridContainer";
 //common variables
 import { sortOption } from "variables/general";
 // core components
@@ -73,8 +73,11 @@ export default function CustomTable(props) {
           <CardDetail cardDetail={cardDetail} />
         </Card>
       </CustomDialog>
-      <GridItem xs={12} sm={12} md={4}>
-        <SortIcon />
+      <GridContainer>
+      <GridItem xs={1}>
+      <SortIcon />
+      </GridItem>
+      <GridItem xs={6} sm={4}>
         <CustomSelect
           labelText="Sort by"
           id="orderby"
@@ -86,6 +89,7 @@ export default function CustomTable(props) {
           }}
         />
       </GridItem>
+      </GridContainer>
       <div className={classes.tableResponsive}>
         <Table className={classes.table}>
           {tableHead !== undefined ? (

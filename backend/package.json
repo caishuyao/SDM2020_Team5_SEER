@@ -23,6 +23,9 @@
   "scripts": {
     "start": "node server.js",
     "test": "jest",
+    "lint:check": "eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+
     "dev": "nodemon server.js"
   },
   "author": "SEER Team-5",

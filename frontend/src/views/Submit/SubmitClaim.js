@@ -62,9 +62,9 @@ export default function SubmitClaim() {
   const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { target } = event;
+    const { name } = target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     switch (name) {
       case "practice":
         setPractice(value === undefined ? "" : value);
@@ -83,7 +83,7 @@ export default function SubmitClaim() {
         setSourcedb(value === undefined ? "" : value);
         break;
       case "claims":
-        setClaims(value === undefined ? [] :[value]);
+        setClaims(value === undefined ? [] : [value]);
         break;
       case "doi":
         setDoi(value);
@@ -99,40 +99,36 @@ export default function SubmitClaim() {
     }
   };
 
-  const handleSubmit = async e => {
-    var post = getPost();
+  const handleSubmit = async () => {
+    const post = getPost();
     console.log(post);
-    postArticles(post).then((result)=>{
+    postArticles(post).then((result) => {
       setMessage(result);
       setOpen(true);
     });
-  
   };
 
-  const getPost = () => {
-    return {
-      'title': title,
-      'author': author,
-      'yearPublished': yearPublished,
-      'sourcedb': sourcedb,
-      'practice': practice,
-      'claims': claims,
-      'doi': doi,
-      'abstract': abstract,
-      'supportRating': supportRate,
-    }
-  }
+  const getPost = () => ({
+    title,
+    author,
+    yearPublished,
+    sourcedb,
+    practice,
+    claims,
+    doi,
+    abstract,
+    supportRating: supportRate,
+  });
 
   const handleClose = () => {
     setOpen(false);
   };
 
-
   return (
     <div>
-      <CustomDialog title="Submit Result" open={open} onClose={handleClose} >
+      <CustomDialog title="Submit Result" open={open} onClose={handleClose}>
         <Card>
-          <CardHeader color={message.retCode===0?"primary":"danger"}>
+          <CardHeader color={message.retCode === 0 ? "primary" : "danger"}>
             <h4 className={classes.cardTitleWhite}>{message.retMsg}</h4>
           </CardHeader>
         </Card>
@@ -184,7 +180,7 @@ export default function SubmitClaim() {
                     labelText="Source database"
                     id="sourcedb"
                     data={LibDB}
-                    value={sourcedb||"ACM"}
+                    value={sourcedb || "ACM"}
                     onChange={handleChange}
                     formControlProps={{
                       fullWidth: true,
@@ -195,7 +191,7 @@ export default function SubmitClaim() {
                   <CustomSelect
                     labelText="Practice"
                     id="practice"
-                    value={practice||""}
+                    value={practice || ""}
                     onChange={handleChange}
                     data={Practices}
                     formControlProps={{
@@ -207,7 +203,7 @@ export default function SubmitClaim() {
                   <CustomSelect
                     labelText="Claims"
                     id="claims"
-                    value={claims===undefined?"":claims.join(",")}
+                    value={claims === undefined ? "" : claims.join(",")}
                     onChange={handleChange}
                     data={claimsList}
                     formControlProps={{
@@ -234,7 +230,7 @@ export default function SubmitClaim() {
                     id="supportRating"
                     onChange={handleChange}
                     data={SupportRate}
-                    value={supportRate||""}
+                    value={supportRate || ""}
                     formControlProps={{
                       fullWidth: true,
                     }}
@@ -260,7 +256,9 @@ export default function SubmitClaim() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button color="primary" onClick={handleSubmit}>Submit</Button>
+              <Button color="primary" onClick={handleSubmit}>
+                Submit
+              </Button>
             </CardFooter>
           </Card>
         </GridItem>

@@ -7,18 +7,16 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import SortIcon from '@material-ui/icons/Sort';
+import SortIcon from "@material-ui/icons/Sort";
 import GridItem from "components/Grid/GridItem.js";
 import CustomSelect from "components/CustomSelect/CustomSelect.js";
 import CustomDialog from "components/CustomDialog/CustomDialog";
 import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
 import CardDetail from "components/Card/CardDetail";
-//common variables
+// common variables
 import { sortOption } from "variables/general";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
-
 
 const useStyles = makeStyles(styles);
 
@@ -31,25 +29,25 @@ export default function CustomTable(props) {
   const [cardDetail, setCardDetail] = useState();
 
   const handleSort = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setOrderBy(value);
     console.log(tableSorted);
-    switch (value){
-      case '1':
-        setTableSorted(tableData.sort((a, b)=>b[3]-a[3]));
-      break;
-      case '2':
-        setTableSorted(tableData.sort((a, b)=>a[3]-b[3]));
-      break;
-      case '3':
-        setTableSorted(tableData.sort((a, b)=>b[7]-a[7]));
-      break;
-      case '4':
-        setTableSorted(tableData.sort((a, b)=>a[7]-b[7]));
-      break;
+    switch (value) {
+      case "1":
+        setTableSorted(tableData.sort((a, b) => b[3] - a[3]));
+        break;
+      case "2":
+        setTableSorted(tableData.sort((a, b) => a[3] - b[3]));
+        break;
+      case "3":
+        setTableSorted(tableData.sort((a, b) => b[7] - a[7]));
+        break;
+      case "4":
+        setTableSorted(tableData.sort((a, b) => a[7] - b[7]));
+        break;
       default:
         setTableSorted(tableData);
-      break;
+        break;
     }
   };
 
@@ -58,17 +56,17 @@ export default function CustomTable(props) {
     setCardDetail(prop);
   };
 
-  const handleClose = value => {
+  const handleClose = () => {
     setOpen(false);
   };
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setTableSorted(tableData);
-  },[tableData]);
+  }, [tableData]);
 
   return (
     <div>
-      <CustomDialog title="Report Detail" open={open} onClose={handleClose} >
+      <CustomDialog title="Report Detail" open={open} onClose={handleClose}>
         <Card>
           <CardDetail cardDetail={cardDetail} />
         </Card>
@@ -79,7 +77,7 @@ export default function CustomTable(props) {
           labelText="Sort by"
           id="orderby"
           data={sortOption}
-          value={orderBy||""}
+          value={orderBy || ""}
           onChange={handleSort}
           formControlProps={{
             fullWidth: true,
@@ -89,35 +87,33 @@ export default function CustomTable(props) {
       <div className={classes.tableResponsive}>
         <Table className={classes.table}>
           {tableHead !== undefined ? (
-            <TableHead className={classes[tableHeaderColor + "TableHeader"]}>
+            <TableHead className={classes[`${tableHeaderColor}TableHeader`]}>
               <TableRow className={classes.tableHeadRow}>
-                {tableHead.map((prop, key) => {
-                  return (
-                    <TableCell
-                      className={classes.tableCell + " " + classes.tableHeadCell}
-                      key={key}
-                    >
-                      {prop}
-                    </TableCell>
-                  );
-                })}
+                {tableHead.map((prop, key) => (
+                  <TableCell
+                    className={`${classes.tableCell} ${classes.tableHeadCell}`}
+                    key={key}
+                  >
+                    {prop}
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
           ) : null}
           <TableBody>
-            {tableSorted.map((prop, key) => {
-              return (
-                <TableRow key={key} className={classes.tableBodyRow} onClick={()=>handleClickOpen(prop)} >
-                  {prop.map((prop, key) => {
-                    return (
-                      <TableCell className={classes.tableCell} key={key}>
-                        {prop}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            {tableSorted.map((prop, key) => (
+              <TableRow
+                key={key}
+                className={classes.tableBodyRow}
+                onClick={() => handleClickOpen(prop)}
+              >
+                {prop.map((prop, key) => (
+                  <TableCell className={classes.tableCell} key={key}>
+                    {prop}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </div>

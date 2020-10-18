@@ -32,20 +32,24 @@ export default function CustomSelect(props) {
   } = props;
 
   const labelClasses = classNames({
-    [" " + classes.labelRootError]: error,
-    [" " + classes.labelRootSuccess]: success && !error
+    [` ${classes.labelRootError}`]: error,
+    [` ${classes.labelRootSuccess}`]: success && !error,
   });
 
   const marginTop = classNames({
     [classes.marginTop]: labelText === undefined,
   });
 
-  const list =Array.isArray(data) ? data.map((row)=>[row.value,row.name]):(getType(data)==="map"? Array.from(data):[]);
+  const list = Array.isArray(data)
+    ? data.map((row) => [row.value, row.name])
+    : getType(data) === "map"
+    ? Array.from(data)
+    : [];
 
   return (
     <FormControl
       {...formControlProps}
-      className={formControlProps.className + " " + classes.formControl}
+      className={`${formControlProps.className} ${classes.formControl}`}
     >
       {labelText !== undefined ? (
         <InputLabel
@@ -62,22 +66,21 @@ export default function CustomSelect(props) {
           disabled: classes.disabled,
         }}
         id={id}
-        name={name? name:id}
+        name={name || id}
         value={value}
         onChange={onChange}
         {...inputProps}
       >
-        { list.map((item, index) => (
+        {list.map((item, index) => (
           <MenuItem key={index} value={item[0]}>
             {item[1]}
           </MenuItem>
-        ))
-        }
-   </Select>
+        ))}
+      </Select>
       {error ? (
-        <Clear className={classes.feedback + " " + classes.labelRootError} />
+        <Clear className={`${classes.feedback} ${classes.labelRootError}`} />
       ) : success ? (
-        <Check className={classes.feedback + " " + classes.labelRootSuccess} />
+        <Check className={`${classes.feedback} ${classes.labelRootSuccess}`} />
       ) : null}
     </FormControl>
   );

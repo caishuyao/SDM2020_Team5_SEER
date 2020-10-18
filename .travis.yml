@@ -2,6 +2,9 @@ language: node_js
 os: linux
 node_js:
 - stable
+scripts:
+- yarn lint:check
+- yarn test
 deploy:
   provider: heroku
   api_key:

@@ -9,7 +9,7 @@ import Card from "components/Card/Card";
 import CardHeader from "components/Card/CardHeader";
 import CardBody from "components/Card/CardBody";
 import { metaEvidences } from "variables/charts";
-import { fetchArticles} from "utils/article.util";
+import { fetchArticles } from "utils/article.util";
 
 const styles = {
   cardCategoryWhite: {
@@ -44,15 +44,12 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Browse() {
-
   const classes = useStyles();
-  
-  const [list,setList] = useState([]);
+
+  const [list, setList] = useState([]);
 
   useEffect(() => {
-    fetchArticles({}).then(
-      (l) => setList(l)
-    );
+    fetchArticles({}).then((l) => setList(l));
   }, []);
 
   console.log(list);

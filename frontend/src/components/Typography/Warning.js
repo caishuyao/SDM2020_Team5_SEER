@@ -11,12 +11,12 @@ export default function Warning(props) {
   const classes = useStyles();
   const { children } = props;
   return (
-    <div className={classes.defaultFontStyle + " " + classes.warningText}>
+    <div className={`${classes.defaultFontStyle} ${classes.warningText}`}>
       {children}
     </div>
   );
 }
 
 Warning.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

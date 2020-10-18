@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -12,11 +12,11 @@ import CardHeader from "components/Card/CardHeader";
 import CardBody from "components/Card/CardBody";
 import CardFooter from "components/Card/CardFooter";
 
-import Avatar from '@material-ui/core/Avatar';
-import Chip from '@material-ui/core/Chip';
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import { Practices, Claims } from "variables/general";
 import { metaEvidences } from "variables/charts";
 import { fetchArticles } from "utils/article.util";
@@ -51,7 +51,7 @@ const styles = {
   },
 };
 
-const curYear = 1900 + (new Date().getYear());
+const curYear = 1900 + new Date().getYear();
 const minYear = 1980;
 const useStyles = makeStyles(styles);
 
@@ -61,7 +61,7 @@ export default function Search() {
   const [sp, setSP] = useState("");
   const [claims, setClaims] = useState([]);
   const [claimsList, setClaimsList] = useState([]);
-  const [beginYear, setBeginYear] = useState(curYear-4);
+  const [beginYear, setBeginYear] = useState(curYear - 4);
   const [endYear, setEndYear] = useState(curYear);
   const [resultList, setResultList] = useState([]);
 
@@ -71,61 +71,71 @@ export default function Search() {
   };
 
   const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    if(name === "practice"){
-      var v =(value===undefined?"":value);
+    const { target } = event;
+    const { name } = target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    if (name === "practice") {
+      const v = value === undefined ? "" : value;
       setSP(v);
-      if(v===""){
+      if (v === "") {
         setClaimsList([]);
         setClaims([]);
       }
       setClaimsList(Claims[value]);
-    }else if(name === "claims"){
+    } else if (name === "claims") {
       setClaims(value);
-    }else if(name === "beginYear"){
-      setBeginYear(value-0);
+    } else if (name === "beginYear") {
+      setBeginYear(value - 0);
     } else if (name === "endYear") {
-      setEndYear(value-0);
+      setEndYear(value - 0);
     }
   };
 
-  const quickYear0 = () =>{
-      setBeginYear(curYear);
-      setEndYear(curYear);
-    };
-  const quickYear5 = () =>{
-      setBeginYear(curYear-4);
-      setEndYear(curYear);
-    };
-  const quickYear10 = () =>{
-      setBeginYear(curYear-9);
-      setEndYear(curYear);
-    };
-  const  handleSubmit = async e => {
-    var post = getPost();
+  const quickYear0 = () => {
+    setBeginYear(curYear);
+    setEndYear(curYear);
+  };
+  const quickYear5 = () => {
+    setBeginYear(curYear - 4);
+    setEndYear(curYear);
+  };
+  const quickYear10 = () => {
+    setBeginYear(curYear - 9);
+    setEndYear(curYear);
+  };
+  const handleSubmit = async () => {
+    const post = getPost();
     console.log(post);
-    var result = await fetchArticles(getPost());
+    const result = await fetchArticles(getPost());
     setResultList(result);
   };
 
-  const getPost = ()=>{
-    var post = {};
-    if(sp){ post['practice'] = sp;}
-    if(claims && claims.length>0){ post['claims'] = claims;}
-    post['yearPublished']={};
-    if(beginYear){ post['yearPublished']["$gte"] = beginYear-0;}
-    if(endYear){ post['yearPublished']["$lte"] = endYear-0;}
+  const getPost = () => {
+    const post = {};
+    if (sp) {
+      post.practice = sp;
+    }
+    if (claims && claims.length > 0) {
+      post.claims = claims;
+    }
+    post.yearPublished = {};
+    if (beginYear) {
+      post.yearPublished.$gte = beginYear - 0;
+    }
+    if (endYear) {
+      post.yearPublished.$lte = endYear - 0;
+    }
     return post;
-  }
+  };
 
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Finding all evidence you need</h4>
+            <h4 className={classes.cardTitleWhite}>
+              Finding all evidence you need
+            </h4>
           </CardHeader>
           <CardBody>
             <GridContainer>
@@ -180,7 +190,8 @@ export default function Search() {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                <Chip avatar={<Avatar>1</Avatar>}
+                <Chip
+                  avatar={<Avatar>1</Avatar>}
                   label="  This    Year  "
                   clickable
                   color="primary"
@@ -190,7 +201,8 @@ export default function Search() {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                <Chip avatar={<Avatar>5</Avatar>}
+                <Chip
+                  avatar={<Avatar>5</Avatar>}
                   label="  Last  5  Years  "
                   clickable
                   color="primary"
@@ -200,7 +212,8 @@ export default function Search() {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
-                <Chip avatar={<Avatar>10</Avatar>}
+                <Chip
+                  avatar={<Avatar>10</Avatar>}
                   label="  Last  10  Years  "
                   clickable
                   color="primary"
@@ -210,7 +223,7 @@ export default function Search() {
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={12}>
-                <br/>
+                <br />
                 <Slider
                   value={[beginYear, endYear]}
                   onChange={handleRangeChange}
@@ -219,14 +232,17 @@ export default function Search() {
                   min={minYear}
                   max={curYear}
                 />
-                <Typography id="yearSlider" >
+                <Typography id="yearSlider">
                   Drag the dots to choose year.
                 </Typography>
               </GridItem>
             </GridContainer>
           </CardBody>
-          <CardFooter >
-            <Button color="primary" onClick={handleSubmit} > Search </Button>
+          <CardFooter>
+            <Button color="primary" onClick={handleSubmit}>
+              {" "}
+              Search{" "}
+            </Button>
           </CardFooter>
         </Card>
       </GridItem>

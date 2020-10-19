@@ -12,6 +12,11 @@ module.exports = {
       jsx: true,
     },
   },
+  settings: {
+    react: {
+      version: "latest",
+    },
+  },
   plugins: ["react"],
   extends: [
     "eslint:recommended",

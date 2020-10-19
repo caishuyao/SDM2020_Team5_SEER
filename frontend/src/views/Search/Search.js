@@ -64,10 +64,17 @@ export default function Search() {
   const [beginYear, setBeginYear] = useState(curYear - 4);
   const [endYear, setEndYear] = useState(curYear);
   const [resultList, setResultList] = useState([]);
+  const [chipColors, setChipColors] = useState([
+    "primary",
+    "primary",
+    "primary",
+    "primary",
+  ]);
 
   const handleRangeChange = (event, newValue) => {
     setBeginYear(newValue[0]);
     setEndYear(newValue[1]);
+    setSelectChip(0);
   };
 
   const handleChange = (event) => {
@@ -86,22 +93,38 @@ export default function Search() {
       setClaims(value);
     } else if (name === "beginYear") {
       setBeginYear(value - 0);
+      setSelectChip(0);
     } else if (name === "endYear") {
       setEndYear(value - 0);
+      setSelectChip(0);
     }
   };
 
+  const setSelectChip = (idx) => {
+    const newColors = [1, 2, 3, 4].map((index) =>
+      index === idx ? "secondary" : "primary"
+    );
+    setChipColors(newColors);
+  };
   const quickYear0 = () => {
     setBeginYear(curYear);
     setEndYear(curYear);
+    setSelectChip(1);
   };
   const quickYear5 = () => {
     setBeginYear(curYear - 4);
     setEndYear(curYear);
+    setSelectChip(2);
   };
   const quickYear10 = () => {
     setBeginYear(curYear - 9);
     setEndYear(curYear);
+    setSelectChip(3);
+  };
+  const quickYearAll = () => {
+    setBeginYear(minYear);
+    setEndYear(curYear);
+    setSelectChip(4);
   };
   const handleSubmit = async () => {
     const post = getPost();
@@ -194,7 +217,7 @@ export default function Search() {
                   avatar={<Avatar>1</Avatar>}
                   label="  This    Year  "
                   clickable
-                  color="primary"
+                  color={chipColors[0]}
                   id="btnThisYear"
                   name="btnThisYear"
                   onClick={quickYear0}
@@ -205,7 +228,7 @@ export default function Search() {
                   avatar={<Avatar>5</Avatar>}
                   label="  Last  5  Years  "
                   clickable
-                  color="primary"
+                  color={chipColors[1]}
                   id="btnLast5Years"
                   name="btnLast5Years"
                   onClick={quickYear5}
@@ -216,19 +239,31 @@ export default function Search() {
                   avatar={<Avatar>10</Avatar>}
                   label="  Last  10  Years  "
                   clickable
-                  color="primary"
+                  color={chipColors[2]}
                   id="btnLast10Years"
                   name="btnLast10Years"
                   onClick={quickYear10}
                 />
               </GridItem>
-              <GridItem xs={12} sm={12} md={12}>
+              <GridItem xs={12} sm={12} md={2}>
+                <Chip
+                  avatar={<Avatar>10</Avatar>}
+                  label="  All Years  "
+                  clickable
+                  color={chipColors[3]}
+                  id="btnAllYears"
+                  name="btnLast10Years"
+                  onClick={quickYearAll}
+                />
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <br />
                 <br />
                 <Slider
                   value={[beginYear, endYear]}
                   onChange={handleRangeChange}
                   aria-labelledby="range-slider"
-                  valueLabelDisplay="auto"
+                  valueLabelDisplay="on"
                   min={minYear}
                   max={curYear}
                 />

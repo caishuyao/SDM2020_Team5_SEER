@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import Link from "@material-ui/core/Link";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -24,12 +25,15 @@ const useStyles = makeStyles(styles);
 export default function CustomTable(props) {
   const col_year = 3;
   const col_sr_number = 8;
+  const col_doi = 4;
   const classes = useStyles();
   const { tableHead, tableData, tableHeaderColor } = props;
   const [orderBy, setOrderBy] = useState();
   const [tableSorted, setTableSorted] = useState([]);
   const [open, setOpen] = useState(false);
   const [cardDetail, setCardDetail] = useState();
+
+  const stopPropagation = (event) => event.stopPropagation();
 
   const handleSort = (e) => {
     const { value } = e.target;
@@ -121,7 +125,17 @@ export default function CustomTable(props) {
                 {row.map((col, index) =>
                   index < tableHead.length ? (
                     <TableCell className={classes.tableCell} key={index}>
-                      {col}
+                      {index == col_doi ? (
+                        <Link
+                          href={`http://doi.org/${col}`}
+                          onClick={stopPropagation}
+                          target="_blank"
+                        >
+                          {col}
+                        </Link>
+                      ) : (
+                        col
+                      )}
                     </TableCell>
                   ) : null
                 )}

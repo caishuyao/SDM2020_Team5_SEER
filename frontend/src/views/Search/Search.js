@@ -128,8 +128,7 @@ export default function Search() {
   };
   const handleSubmit = async () => {
     const post = getPost();
-    console.log(post);
-    const result = await fetchArticles(getPost());
+    const result = await fetchArticles(post);
     setResultList(result);
   };
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "install": "(cd backend && yarn) &&( cd frontend && yarn)",
-    "test": "(cd backend && yarn test) &&( cd frontend && yarn test)",
+    "test": "(cd backend && yarn test --verbose) &&( cd frontend && yarn test --verbose)",
     "lint:check": "(cd backend && yarn lint:check) &&( cd frontend && yarn lint:check)",
     "lint:fix": "(cd backend && yarn lint:fix) &&( cd frontend && yarn lint:fix)",
     "start": "cd backend && yarn start",
@@ -18,6 +18,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "concurrently": "^4.0.1",
+    "core-js": "3",
     "eslint-config-airbnb": "^18.2.0"
   },
   "license": "MIT"

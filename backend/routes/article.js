@@ -4,6 +4,7 @@ const articleController = require('../controllers/articleController');
 
 router
   .route('/')
+//  .get((req, res) => res.status(200).json({}))
   .get(articleController.findAll)
   .post(articleController.create);
 

@@ -5,7 +5,7 @@ const Article = require('../models/Article');
 module.exports = {
   findAll(req, res) {
     console.log('get request find all matched records:', req.query);
-    const param = JSON.parse(req.query.q);
+    const param = req.query.q ? JSON.parse(req.query.q) : {};
     console.log(param);
     Article.find(param)
       .then((articles) => res.json(articles))
